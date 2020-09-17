@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-【搜索】【动态规划】jlz的漫步" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/%E3%80%90%E6%90%9C%E7%B4%A2%E3%80%91%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%91jlz%E7%9A%84%E6%BC%AB%E6%AD%A5/" class="article-date">
+  <time datetime="2018-05-27T15:04:41.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>►<a class="article-category-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a>►<a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/%E3%80%90%E6%90%9C%E7%B4%A2%E3%80%91%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%91jlz%E7%9A%84%E6%BC%AB%E6%AD%A5/">【搜索】【动态规划】jlz的漫步</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="http://acm.xidian.edu.cn/problem.php?cid=1041&pid=6">http://acm.xidian.edu.cn/problem.php?cid=1041&amp;pid=6</a></p>
+<p>#include<cstdio><br>#include<algorithm><br>using namespace std;<br>#define MAXN 1009<br>int a[MAXN][MAXN], n, m, dp[MAXN][MAXN];<br>int dr[]={-1, 1, 0, 0};<br>int dc[]={0, 0, -1, 1};<br>int is_in(int r, int c){<br>    return 1&lt;=r&amp;&amp;r&lt;=n&amp;&amp;1&lt;=c&amp;&amp;c&lt;=m;<br>}<br>int dfs(int r, int c){<br>    if(dp[r][c]){<br>        return dp[r][c];<br>    }<br>    int dep=1, nr, nc;<br>    for(int i=0; i&lt;4; ++i){<br>        nr=r+dr[i];<br>        nc=c+dc[i];<br>        if(is_in(nr, nc)){<br>            if(a[nr][nc]&gt;a[r][c]){<br>                dep=max(dep, 1+dfs(nr, nc));<br>            }<br>        }<br>    }<br>    return dp[r][c]=dep;<br>}<br>void solve(){<br>    scanf(“%d%d”, &amp;n, &amp;m);<br>    for(int i=1; i&lt;=n; ++i){<br>        for(int j=1; j&lt;=m; ++j){<br>            dp[i][j]=0;<br>            scanf(“%d”, &amp;a[i][j]);<br>        }<br>    }<br>    int ans=1;<br>    for(int i=1; i&lt;=n; ++i){<br>        for(int j=1; j&lt;=m; ++j){<br>            ans=max(ans, dfs(i, j));<br>        }<br>    }<br>    printf(“%d\n”, ans);<br>}<br>int main(){<br>    int T;<br>    scanf(“%d”, &amp;T);<br>    while(T–){<br>        solve();<br>    }<br>    return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/27/%E3%80%90%E6%90%9C%E7%B4%A2%E3%80%91%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%91jlz%E7%9A%84%E6%BC%AB%E6%AD%A5/" data-id="ckf6quc33005dxsw72elf3qsm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【模板】链式前向星" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/" class="article-date">
+  <time datetime="2018-05-27T03:07:42.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a>►<a class="article-category-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">【模板】链式前向星</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>链式前向星的作用是存储边，空间复杂度为O(4n)，可O(n)枚举以 x 为起点的所有边。</p>
+<p>int et=0;//edge_tot<br>void adde(int s, int e, int c)//add_edge(start, end, capacity)<br>{<br>end[++et]=e;//编号为 et 的边的终点<br>len[et]=c;//编号为 et 的边的容量<br>next[et]=last[s];//next[et]记录与第 et 号边有相同起点的上一条边的编号<br>last[s]=et;//第 et 条边是以 s 为起点的最新的一条边<br>}</p>
+<p>//枚举以 x 为起点的所有边<br>i=last[x];<br>while(i)<br>{<br>……<br>……<br>……<br>……<br>i=next[i];<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/27/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/" data-id="ckf6quc3o0079xsw7fiq38b0i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【模板】sap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91sap/" class="article-date">
+  <time datetime="2018-05-27T03:01:35.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a>►<a class="article-category-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a>►<a class="article-category-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a>►<a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91sap/">【模板】SAP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>int n, g[maxn][maxn], dis[maxn], vd[maxn];<br>int dfs(int u, int flow)<br>{<br>int temp, v, delta;<br>if(u==n)return flow;<br>delta=0;<br>for(v=1; v&lt;=n; v++)<br>{<br>if(g[u][v]&gt;0&amp;&amp;dis[u]==dis[v]+1)<br>{<br>temp=dfs(v, Min(flow-delta, g[u][v]));<br>g[u][v]-=temp;<br>g[v][u]+=temp;<br>delta+=temp;<br>if(delta==flowdis[1]&gt;=n)return delta;<br>}<br>}<br>if(dis[1]&gt;=n)return delta;<br>vd[dis[u]]–;<br>if(vd[dis[u]]==0)dis[1]=n;<br>dis[u]++;<br>vd[dis[u]]++;<br>return delta;<br>}<br>int main()<br>{<br>while(dis[1]&lt;n)<br>{<br>ans+=dfs(1, inf);<br>}<br>printf(“%d”, ans);<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/27/%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91sap/" data-id="ckf6quc3m0072xsw7d5hm90zz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【搜索】营救公主" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/26/%E3%80%90%E6%90%9C%E7%B4%A2%E3%80%91%E8%90%A5%E6%95%91%E5%85%AC%E4%B8%BB/" class="article-date">
+  <time datetime="2018-05-25T16:29:45.000Z" itemprop="datePublished">2018-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/26/%E3%80%90%E6%90%9C%E7%B4%A2%E3%80%91%E8%90%A5%E6%95%91%E5%85%AC%E4%B8%BB/">【搜索】营救公主</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写成dfs了，丑，以后再补bfs的程序吧。变量名很长，可能算是易于理解吧。</p>
+<p>#include<cstdio><br>using namespace std;<br>#define MAXN 29<br>int dr[4]={0, 0, -1, 1};<br>int dc[4]={-1, 1, 0, 0};<br>int n, m;<br>char g[MAXN][MAXN];<br>bool mark[MAXN][MAXN];<br>struct place{<br>    int r, c;<br>}S, G, door[5];<br>int key[5];<br>bool have_found_door[5], have_got_all_key[5];<br>bool dfs(int cur_r, int cur_c){<br>    bool arrived=false;<br>    int next_r, next_c;<br>    char next_stuff;<br>    mark[cur_r][cur_c]=true;<br>    for(int i=0; i&lt;4; ++i){<br>        next_r=cur_r+dr[i];<br>        next_c=cur_c+dc[i];<br>        if(mark[next_r][next_c]‘X’==g[next_r][next_c]){<br>            continue;<br>        }<br>        next_stuff=g[next_r][next_c];<br>        if(‘G’==g[next_r][next_c]){<br>            return true;<br>        }<br>        else if(‘.’==g[next_r][next_c]){<br>            if(dfs(next_r, next_c)){<br>                arrived=true;<br>            }<br>        }<br>        else if(‘a’&lt;=next_stuff&amp;&amp;next_stuff&lt;=’e’){<br>            –key[next_stuff-‘a’];<br>            if(0==key[next_stuff-‘a’]){<br>                have_got_all_key[next_stuff-‘a’]=true;<br>                if(have_found_door[next_stuff-‘a’]){<br>                    if(dfs(door[next_stuff-‘a’].r, door[next_stuff-‘a’].c)){<br>                        arrived=true;<br>                    }<br>                }<br>            }<br>            if(dfs(next_r, next_c)){<br>                arrived=true;<br>            }</p>
+<pre><code>    &#125;
+    else if(&#39;A&#39;&lt;=next\_stuff&amp;&amp;next\_stuff&lt;=&#39;E&#39;)&#123;
+        have\_found\_door\[next\_stuff-&#39;A&#39;\]=true;
+        if(have\_got\_all\_key\[next\_stuff-&#39;A&#39;\])&#123;
+            if(dfs(next\_r, next\_c))&#123;
+                arrived=true;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+return arrived;</code></pre>
+<p>}<br>void init(){<br>    char cur;<br>    for(int i=0; i&lt;5; ++i){<br>        key[i]=0;<br>        have_found_door[i]=false;<br>        have_got_all_key[i]=false;<br>    }<br>    for(int i=1; i&lt;=m; ++i){<br>        for(int j=1; j&lt;=n; ++j){<br>            mark[i][j]=false;<br>        }<br>    }<br>    for(int i=1; i&lt;=m; ++i){<br>        scanf(“%s”, g[i]+1);<br>    }<br>    for(int i=0; i&lt;=n+1; ++i){<br>        g[0][i]=’X’;<br>        g[m+1][i]=’X’;<br>    }<br>    for(int i=1; i&lt;=m; ++i){<br>        g[i][0]=’X’;<br>        g[i][n+1]=’X’;<br>        for(int j=1; j&lt;=n; ++j){<br>            cur=g[i][j];<br>            if(‘.’==cur){<br>                continue;<br>            }<br>            else if(‘a’&lt;=cur&amp;&amp;cur&lt;=’e’){<br>                ++key[cur-‘a’];<br>            }<br>            else if(‘A’&lt;=cur&amp;&amp;cur&lt;=’E’){<br>                door[cur-‘A’].r=i;<br>                door[cur-‘A’].c=j;<br>            }<br>            else if(‘G’==cur){<br>                G.r=i;<br>                G.c=j;<br>            }<br>            else if(‘S’==cur){<br>                S.r=i;<br>                S.c=j;<br>            }<br>        }<br>    }<br>}<br>void solve(){<br>    printf(“%s\n”, dfs(S.r, S.c)?”YES”:”NO”);<br>}<br>int main(){<br>    while(scanf(“%d%d”, &amp;m, &amp;n), !(0==n&amp;&amp;0==m)){<br>        init();<br>        solve();<br>    }<br>    return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/26/%E3%80%90%E6%90%9C%E7%B4%A2%E3%80%91%E8%90%A5%E6%95%91%E5%85%AC%E4%B8%BB/" data-id="ckf6quc34005fxsw7glks25n0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-weekly-mission-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/weekly-mission-3/" class="article-date">
+  <time datetime="2018-05-21T13:29:12.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/weekly-mission-3/">WEEKLY MISSION 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C 简单的数字变换</p>
+<p>#include&lt;stdio.h&gt;<br>int f(int n, int m){<br>    if(n&gt;=m){<br>        return n-m;<br>    }<br>    return 1+f(n, m%2==0?m/2:m+1);<br>}<br>int main(){<br>    int n, m;<br>    while(scanf(“%d%d”, &amp;n, &amp;m)!=EOF){<br>        printf(“%d\n”, 0==n?(0==m?0:-1):f(n, m));<br>    }<br>    return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/21/weekly-mission-3/" data-id="ckf6quc23002wxsw7ahm53he9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-euler-theorem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/euler-theorem/" class="article-date">
+  <time datetime="2018-05-19T15:07:46.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/euler-theorem/">Euler theorem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include<cstdio><br>using namespace std;<br>int main(){<br>int T, a;<br>scanf(“%d”, &amp;T);<br>while(T–){<br>scanf(“%d”, &amp;a);<br>printf(“%d\n”, (a+1)/2+1);<br>}<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/19/euler-theorem/" data-id="ckf6quc1h001vxsw789ie8pp3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【未证明】【贪心】ball" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/%E3%80%90%E6%9C%AA%E8%AF%81%E6%98%8E%E3%80%91%E3%80%90%E8%B4%AA%E5%BF%83%E3%80%91ball/" class="article-date">
+  <time datetime="2018-05-19T13:44:22.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/%E3%80%90%E6%9C%AA%E8%AF%81%E6%98%8E%E3%80%91%E3%80%90%E8%B4%AA%E5%BF%83%E3%80%91ball/">【未证明】【贪心】Ball</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>乍一看觉得是贪心，想要DP，硬是没有想到区间排序。 小插曲是某大佬只花 3mins 提供了一个解法，但是强行把题目条件减弱了，所以最后居然又被L1143找到反例了。 看了题解才会。 百度题面第一篇题解即可。 证明不了为什么要这么做。不哭。 画个操作图解： <a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/05/5.png"><img src="http://logiko.top/wp-content/uploads/2018/05/5.png"></a></p>
+<p>#include<cstdio><br>#include<stack><br>#include<algorithm><br>using namespace std;<br>#define MAXN 1009<br>int n, m, a[MAXN], b[MAXN], want[MAXN], l[MAXN], r[MAXN];<br>stack<int>place[MAXN];<br>void init(){<br>for(int i=0; i&lt;=n; ++i){<br>while(!place[i].empty()){<br>place[i].pop();<br>}<br>}<br>}<br>void solve(){<br>scanf(“%d%d”, &amp;n, &amp;m);<br>init();<br>for(int i=1; i&lt;=n; ++i){<br>scanf(“%d”, &amp;a[i]);<br>}<br>for(int i=1; i&lt;=n; ++i){<br>scanf(“%d”, &amp;b[i]);<br>}<br>for(int i=1; i&lt;=m; ++i){<br>scanf(“%d%d”, &amp;l[i], &amp;r[i]);<br>}<br>for(int i=n; i; –i){<br>place[b[i]].push(i);<br>}<br>for(int i=1; i&lt;=n; ++i){<br>if(place[a[i]].empty()){<br>puts(“No”);<br>return;<br>}<br>want[i]=place[a[i]].top();<br>place[a[i]].pop();<br>}<br>for(int i=1; i&lt;=m; ++i){<br>sort(want+l[i], want+r[i]+1);<br>}<br>for(int i=1; i&lt;=n; ++i){<br>if(want[i]!=i){<br>puts(“No”);<br>return;<br>}<br>}<br>puts(“Yes”);<br>}<br>int main(){<br>int T;<br>scanf(“%d”, &amp;T);<br>while(T–){<br>solve();<br>}<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/19/%E3%80%90%E6%9C%AA%E8%AF%81%E6%98%8E%E3%80%91%E3%80%90%E8%B4%AA%E5%BF%83%E3%80%91ball/" data-id="ckf6quc3d0062xsw781bl5y3z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【二分查找】【哈希】squares" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/%E3%80%90%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E3%80%91%E3%80%90%E5%93%88%E5%B8%8C%E3%80%91squares/" class="article-date">
+  <time datetime="2018-05-19T13:11:28.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>►<a class="article-category-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/%E3%80%90%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E3%80%91%E3%80%90%E5%93%88%E5%B8%8C%E3%80%91squares/">【二分查找】【哈希】Squares</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>（先用map实现的二分查找的功能，然后超时了，悲剧，然后查题解，看到有人说用哈希，既然看到也有人二分查找过了，决定不写哈希，改用vector的lower_bound实现二分查找功能，2000+ms飘过。） 思路：直到一个正方形的两个顶点，它的另外两个顶点有三种情况。如图： <a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/05/4-1.png"><img src="http://logiko.top/wp-content/uploads/2018/05/4-1.png"></a>已知两个红点，其他两个点可能出现在紫黄绿三种位置。 所以此题考虑枚举两个点，然后查找另外两个点是否存在。 然后发现其实没必要算紫色点，因为紫色点的情况会在另外两种情况被计算到。所以只需要查找黄绿两种情况。坐标如图： <a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/05/3-1.png"><img src="http://logiko.top/wp-content/uploads/2018/05/3-1.png"></a>每个正方形会被重复计数4次， 所以答案要除以4。 2000+ms AC程序：</p>
+<p>#include<cstdio><br>#include<vector><br>#include<algorithm><br>using namespace std;<br>#define MAXN 1009<br>#define MAXX 40001<br>int n, x[MAXN], y[MAXN];<br>vector<int>mark;<br>void solve(){<br>while(!mark.empty()){<br>mark.pop_back();<br>}<br>for(int i=1; i&lt;=n; ++i){<br>scanf(“%d%d”, &amp;x[i], &amp;y[i]);<br>mark.push_back(MAXX*x[i]+y[i]);<br>}<br>sort(mark.begin(), mark.end());<br>int ans=0, x1, y1, x2, y2, p3, p4;<br>for(int i=1; i&lt;=n; ++i){<br>x1=x[i];<br>y1=y[i];<br>for(int j=i+1; j&lt;=n; ++j){<br>x2=x[j];<br>y2=y[j];<br>p3=(MAXX*(x1-(y2-y1))+y1+(x2-x1));<br>p4=(MAXX*(x2-(y2-y1))+y2+(x2-x1));<br>if(*lower_bound(mark.begin(), mark.end(), p3)==p3&amp;&amp;*lower_bound(mark.begin(), mark.end(), p4)==p4){<br>++ans;<br>}<br>p3=(MAXX*(x1+(y2-y1))+y1-(x2-x1));<br>p4=(MAXX*(x2+(y2-y1))+y2-(x2-x1));<br>if(*lower_bound(mark.begin(), mark.end(), p3)==p3&amp;&amp;*lower_bound(mark.begin(), mark.end(), p4)==p4){<br>++ans;<br>}<br>}<br>}<br>printf(“%d\n”, ans/4);<br>}<br>int main(){<br>while(scanf(“%d”, &amp;n), n){<br>solve();<br>}<br>return 0;<br>}</p>
+<p>  用map实现二分查找的超时程序：</p>
+<p>#include<cstdio><br>#include<map><br>using namespace std;<br>#define MAXN 1009<br>int n;<br>typedef pair&lt;int, int&gt; point;<br>point p[MAXN];<br>map&lt;point, int&gt;mark;<br>void solve(){<br>mark.clear();<br>for(int i=1; i&lt;=n; ++i){<br>scanf(“%d%d”, &amp;p[i].first, &amp;p[i].second);<br>mark[p[i]]=true;<br>}<br>int ans=0, x1, y1, x2, y2;<br>point p3, p4;<br>for(int i=1; i&lt;=n; ++i){<br>x1=p[i].first;<br>y1=p[i].second;<br>for(int j=i+1; j&lt;=n; ++j){<br>x2=p[j].first;<br>y2=p[j].second;<br>p3=make_pair(x1-(y2-y1), y1+(x2-x1));<br>p4=make_pair(x2-(y2-y1), y2+(x2-x1));<br>if(mark.count(p3)&amp;&amp;mark.count(p4)){<br>++ans;<br>}<br>p3=make_pair(x1+(y2-y1), y1-(x2-x1));<br>p4=make_pair(x2+(y2-y1), y2-(x2-x1));<br>if(mark.count(p3)&amp;&amp;mark.count(p4)){<br>++ans;<br>}<br>}<br>}<br>printf(“%d\n”, ans/4);<br>}<br>int main(){<br>while(scanf(“%d”, &amp;n), n){<br>solve();<br>}<br>return 0;<br>}</p>
+<p>  （后话：既然紫色点可以不计算，那么黄绿两种点是不是可以只计算一种，然后答案除以2，嗯嗯，起初我也是这样想的，然后尝试了一下交了一发然后WA了，至于为什么？我还不知道）。 实际上后来看题解发现好多人用的恰恰是求紫色点，然后每个正方形被重复计数两边，所以答案除以2。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/19/%E3%80%90%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E3%80%91%E3%80%90%E5%93%88%E5%B8%8C%E3%80%91squares/" data-id="ckf6quc2a003hxsw7et8k9wp1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-points-in-segments" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/points-in-segments/" class="article-date">
+  <time datetime="2018-05-19T11:36:41.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/points-in-segments/">Points in Segments</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include<cstdio><br>using namespace std;<br>#define MAXN 100009<br>#define inf 1000000009<br>int n, q;<br>int a[MAXN];<br>int binary_find_L(int ans){<br>int L=1, R=n+1, mid;<br>while(L&lt;R){<br>mid=(L+R)/2;<br>if(a[mid]&gt;=ans)R=mid;<br>else L=mid+1;<br>}<br>return L;<br>}<br>int binary_find_R(int ans){<br>int L=1, R=n+1, mid;<br>while(L&lt;R){<br>mid=(L+R)/2;<br>if(a[mid]&gt;ans)R=mid;<br>else L=mid+1;<br>}<br>return L;<br>}<br>void solve(){<br>scanf(“%d%d”, &amp;n, &amp;q);<br>for(int i=1; i&lt;=n; ++i){<br>scanf(“%d”, &amp;a[i]);<br>}<br>a[n+1]=inf;<br>int A, B, L, R;<br>while(q–){<br>scanf(“%d%d”, &amp;A, &amp;B);<br>L=binary_find_L(A);<br>R=binary_find_R(B);<br>printf(“%d\n”, R-L);<br>}<br>}<br>int main(){<br>int T;<br>scanf(“%d”, &amp;T);<br>for(int i=1; i&lt;=T; ++i){<br>printf(“Case %d:\n”, i);<br>solve();<br>}<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/19/points-in-segments/" data-id="ckf6quc1u002gxsw716la1u36" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【尺取法】【二分查找】b-unique-snowflakes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/%E3%80%90%E5%B0%BA%E5%8F%96%E6%B3%95%E3%80%91%E3%80%90%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E3%80%91b-unique-snowflakes/" class="article-date">
+  <time datetime="2018-05-18T17:01:58.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a>►<a class="article-category-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/%E3%80%90%E5%B0%BA%E5%8F%96%E6%B3%95%E3%80%91%E3%80%90%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E3%80%91b-unique-snowflakes/">【尺取法】【二分查找】B - Unique Snowflakes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>尺取法（好像也叫滑动窗口，也叫双指针）+二分查找 维护 [L, R] 区间为一个不重复子串，不断“转移”这个字串。不断优先向右增长，直到不能增长为止，不断从左缩短，直到可以继续向右增长。 <a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/05/2-1.png"><img src="http://logiko.top/wp-content/uploads/2018/05/2-1.png"></a>向右增长，及把 [L, R] 变成 [L, R+1]，需要判断 value[R+1] 上一次出现的位置，用二分查找即可（我的程序中用的 map 实现）。 AC程序</p>
+<p>#include<cstdio><br>#include<map><br>using namespace std;<br>#define MAXN 1000009<br>int n, L, R, a[MAXN];<br>map&lt;int, int&gt;p;<br>bool is_in(int R){<br>if(R&gt;n)return true;<br>if(!p.count(a[R]))return false;<br>if(p[a[R]]&lt;L)return false;<br>return true;<br>}<br>int max(int a, int b){<br>return a&gt;b?a:b;<br>}<br>void solve(){<br>p.clear();<br>scanf(“%d”, &amp;n);<br>for(int i=1; i&lt;=n; ++i){<br>scanf(“%d”, &amp;a[i]);<br>}<br>int ans=1;<br>R=1;<br>p[a[1]]=1;<br>for(L=1; L&lt;=n; ++L){<br>while(!is_in(R+1)){<br>++R;<br>p[a[R]]=R;<br>ans=max(ans, R-L+1);<br>}</p>
+<p>}<br>printf(“%d\n”, ans);<br>}<br>int main(){<br>int T;<br>scanf(“%d”, &amp;T);<br>while(T–){<br>solve();<br>}<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/19/%E3%80%90%E5%B0%BA%E5%8F%96%E6%B3%95%E3%80%91%E3%80%90%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E3%80%91b-unique-snowflakes/" data-id="ckf6quc2w0053xsw7arsg58tp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2-SAT/">2-SAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ACM%E7%AB%9E%E8%B5%9B/">ACM竞赛</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KMP/">KMP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Point/">Point</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%85%E8%A7%A3%E5%86%B3/">待解决</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%A7%E6%8B%89%E5%9B%BE/">欧拉图</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B4%AA%E5%BF%83/">贪心</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" rel="tag">2-SAT，二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" rel="tag">2-SAT，图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" rel="tag">栈，树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="tag">欧拉回路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" rel="tag">路径压缩</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2-SAT/" style="font-size: 10px;">2-SAT</a> <a href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" style="font-size: 10px;">2-SAT，二分</a> <a href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">2-SAT，图论</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/tarjan/" style="font-size: 10px;">tarjan</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10px;">优先队列</a> <a href="/tags/%E5%89%B2%E7%82%B9/" style="font-size: 10px;">割点</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" style="font-size: 10px;">栈，树</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">模板</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">路径压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/sizeof-%E7%AC%94%E8%AE%B0/">sizeof 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/%E4%B8%A4%E4%B8%AA%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E8%BD%AF%E4%BB%B6/">两个屏幕录制软件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/10/%E3%80%90%E6%A0%91%E3%80%91red-alert/">【树】Red alert</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/%E3%80%90poj-2157%E3%80%91maze/">【POJ 2157】Maze</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

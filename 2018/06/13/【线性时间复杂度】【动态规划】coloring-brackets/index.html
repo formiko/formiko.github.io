@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>【线性时间复杂度】【递推】Coloring Brackets | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="警告：这是一篇没讲清楚的题解，只能意会了。 据说是区间动规。 怎么说，我的解法居然是 O(n) 的，看了 cf 题解和搜到的题解都是 O(n^2) 。说说我的做法吧。  尴尬一图流：  好吧，上图是说不清楚问题的。核心思想是从内层括号转移到外层直到完整表达式。核心操作是 merge() 和 extend() 操作。 首先初始值是 () 的答案是 4。下文中 _ 表示不染色， R 表示染红色， B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【线性时间复杂度】【递推】Coloring Brackets">
+<meta property="og:url" content="http://example.com/2018/06/13/%E3%80%90%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E3%80%91%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%91coloring-brackets/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="警告：这是一篇没讲清楚的题解，只能意会了。 据说是区间动规。 怎么说，我的解法居然是 O(n) 的，看了 cf 题解和搜到的题解都是 O(n^2) 。说说我的做法吧。  尴尬一图流：  好吧，上图是说不清楚问题的。核心思想是从内层括号转移到外层直到完整表达式。核心操作是 merge() 和 extend() 操作。 首先初始值是 () 的答案是 4。下文中 _ 表示不染色， R 表示染红色， B">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://logiko.top/wp-content/uploads/2018/06/1PBFA7_VOVQHDM44UWGL-1.png">
+<meta property="og:image" content="http://logiko.top/wp-content/uploads/2018/06/@XQ0GD_VE5OSFN511F_T.png">
+<meta property="article:published_time" content="2018-06-12T16:48:58.000Z">
+<meta property="article:modified_time" content="2020-09-17T11:39:00.866Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://logiko.top/wp-content/uploads/2018/06/1PBFA7_VOVQHDM44UWGL-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【线性时间复杂度】【动态规划】coloring-brackets" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/13/%E3%80%90%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E3%80%91%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%91coloring-brackets/" class="article-date">
+  <time datetime="2018-06-12T16:48:58.000Z" itemprop="datePublished">2018-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【线性时间复杂度】【递推】Coloring Brackets
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>警告：这是一篇没讲清楚的题解，只能意会了。 据说是区间动规。 怎么说，我的解法居然是 O(n) 的，看了 cf 题解和搜到的题解都是 O(n^2) 。说说我的做法吧。 <a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/06/1PBFA7_VOVQHDM44UWGL-1.png"><img src="http://logiko.top/wp-content/uploads/2018/06/1PBFA7_VOVQHDM44UWGL-1.png"></a> 尴尬一图流： <a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/06/@XQ0GD_VE5OSFN511F_T.png"><img src="http://logiko.top/wp-content/uploads/2018/06/@XQ0GD_VE5OSFN511F_T.png"></a> 好吧，上图是说不清楚问题的。核心思想是从内层括号转移到外层直到完整表达式。核心操作是 merge() 和 extend() 操作。 首先初始值是 () 的答案是 4。下文中 _ 表示不染色， R 表示染红色， B 你猜。 根据前面提到的核心思想。定义 f[i][j] ( 0&lt;i, j&lt;3表示到达这一表达式的方案数。这一表达式形如 _…..R 或者 B……_ 之类 。0表示不染色，1表示染红色……。 题目给出的表达式 s 一定可以通过内层表达式不断变化得到。 例如 (()) 是由内层 () 变化而来， (()()) 是由 内层左一 () 变成 中间整体 ()() 变成 (()())。 <strong>不难发现，括号表达式之间的关系只有两种:</strong></p>
+<ol>
+<li><strong>包含</strong></li>
+<li><strong>并列</strong></li>
+</ol>
+<p>包含关系可以通过 extend() 计数， 并列关系可以通过 merge() 计数。 (()) 是由 () extend (扩展)而来。什么是 extend？extend 就是加一层括号。然后简单实现一下extend() 就可以了。 (()()) 是 先merge()中间两个(),再extend()即可。简单实现一下 merge() 就可以了。 然后要解决变化顺序的问题。这就要用上括号匹配了。给括号记录一个 time 时间戳就能轻松得到变化顺序了。</p>
+<p>#include<cstdio><br>#include<stack><br>using namespace std;<br>#define MAXL 709<br>#define ll long long<br>int da[]={0, 0, 1, 2};<br>int db[]={1, 2, 0, 0};<br>struct node{<br>int time;<br>ll f[3][3];<br>}atom;<br>const ll MOD = 1e9+7;<br>char s[MAXL];<br>stack<int>e;<br>stack<node>state, temp;<br>inline void merge(node &amp;c, node &amp;a, node &amp;b){<br>for(int i=0; i&lt;3; ++i){<br>for(int j=0; j&lt;3; ++j){<br>c.f[i][j]=0;// f[i][j] += f[i][x] + f[y][j]<br>for(int x=0; x&lt;3; ++x){<br>for(int y=0; y&lt;3; ++y){<br>if(x&amp;&amp;x==y){<br>continue;<br>}<br>c.f[i][j]+=(a.f[i][x]*b.f[y][j])%MOD;<br>c.f[i][j]%=MOD;<br>}<br>}<br>}<br>}<br>}<br>inline void extend(node &amp;re, node &amp;a){<br>for(int i=0; i&lt;3; ++i){<br>for(int j=0; j&lt;3; ++j){<br>re.f[i][j]=0;<br>}<br>}<br>for(int i=0; i&lt;3; ++i){<br>for(int j=0; j&lt;3; ++j){<br>for(int k=0; k&lt;4; ++k){<br>if((i&amp;&amp;i==da[k])(j&amp;&amp;j==db[k])){<br>continue;<br>}<br>re.f[da[k]][db[k]]+=a.f[i][j];<br>re.f[da[k]][db[k]]%=MOD;<br>}<br>}<br>}<br>}<br>int main(){<br>atom.f[0][1]=1;<br>atom.f[1][0]=1;<br>atom.f[0][2]=1;<br>atom.f[2][0]=1;<br>scanf(“%s”, s);<br>int time=0, cur_time;<br>for(int i=0; s[i]!=’\0’; ++i){<br>if(‘(‘==s[i]){<br>e.push(time++);<br>}<br>else{<br>cur_time=e.top();<br>e.pop();<br>while(!state.empty()){<br>node pre=state.top();<br>if(pre.time&lt;cur_time){<br>break;<br>}<br>state.pop();<br>temp.push(pre);<br>}<br>if(temp.empty()){<br>atom.time=cur_time;<br>state.push(atom);<br>}<br>else{<br>while(temp.size()&gt;1){<br>node a=temp.top();<br>temp.pop();<br>node b=temp.top();<br>temp.pop();<br>node c;<br>merge(c, a, b);<br>temp.push(c);<br>}<br>node c=temp.top(), ec;<br>temp.pop();<br>extend(ec, c);<br>ec.time=cur_time;<br>state.push(ec);<br>}<br>}<br>}<br>while(state.size()&gt;1){<br>node a=state.top();<br>state.pop();<br>node b=state.top();<br>state.pop();<br>node c;<br>merge(c, a, b);<br>state.push(c);<br>}<br>node ans_state=state.top();<br>int ans=0;<br>for(int i=0; i&lt;3; ++i){<br>for(int j=0; j&lt;3; ++j){<br>ans+=(int)ans_state.f[i][j];<br>ans%=(int)MOD;<br>}<br>}<br>printf(“%d\n”, ans);<br>return 0;<br>}</p>
+<p>  可能是一篇只能意会的题解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/06/13/%E3%80%90%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E3%80%91%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%91coloring-brackets/" data-id="ckf6quc3r007kxsw74fap36jz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/20/%E3%80%90%E4%BC%AA%E6%9A%B4%E5%8A%9B%E6%99%BA%E5%95%86%E5%89%AA%E6%9E%9D%E3%80%91codeforces-round-489-div-2-d/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【伪暴力+智商剪枝】Codeforces Round
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/11/%E3%80%90%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%93%E9%A2%98%E3%80%91xdu-acm-weekly-mission6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【动态规划专题】XDU_ACM_WEEKLY_MISSION6</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2-SAT/">2-SAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ACM%E7%AB%9E%E8%B5%9B/">ACM竞赛</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KMP/">KMP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Point/">Point</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%85%E8%A7%A3%E5%86%B3/">待解决</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%A7%E6%8B%89%E5%9B%BE/">欧拉图</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B4%AA%E5%BF%83/">贪心</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" rel="tag">2-SAT，二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" rel="tag">2-SAT，图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" rel="tag">栈，树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="tag">欧拉回路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" rel="tag">路径压缩</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2-SAT/" style="font-size: 10px;">2-SAT</a> <a href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" style="font-size: 10px;">2-SAT，二分</a> <a href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">2-SAT，图论</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/tarjan/" style="font-size: 10px;">tarjan</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10px;">优先队列</a> <a href="/tags/%E5%89%B2%E7%82%B9/" style="font-size: 10px;">割点</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" style="font-size: 10px;">栈，树</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">模板</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">路径压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/sizeof-%E7%AC%94%E8%AE%B0/">sizeof 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/%E4%B8%A4%E4%B8%AA%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E8%BD%AF%E4%BB%B6/">两个屏幕录制软件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/10/%E3%80%90%E6%A0%91%E3%80%91red-alert/">【树】Red alert</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/%E3%80%90poj-2157%E3%80%91maze/">【POJ 2157】Maze</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

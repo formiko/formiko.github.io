@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>【暂存】程序篮子 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#include&lt;stdio.h&gt;#include&lt;string.h&gt;#define maxl 1009#define ll long longchar a[maxl];&#x2F;&#x2F;用字符串存储mll m[maxl], n, ans[maxl];void solve1();&#x2F;&#x2F;解决乘法情况void solve2();  &#x2F;&#x2F;解决除法情况void init(); &#x2F;&#x2F;初始化int m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【暂存】程序篮子">
+<meta property="og:url" content="http://example.com/2018/03/26/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E7%A8%8B%E5%BA%8F%E7%AF%AE%E5%AD%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#include&lt;stdio.h&gt;#include&lt;string.h&gt;#define maxl 1009#define ll long longchar a[maxl];&#x2F;&#x2F;用字符串存储mll m[maxl], n, ans[maxl];void solve1();&#x2F;&#x2F;解决乘法情况void solve2();  &#x2F;&#x2F;解决除法情况void init(); &#x2F;&#x2F;初始化int m">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-03-26T11:51:35.000Z">
+<meta property="article:modified_time" content="2020-09-17T11:39:00.915Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【暂存】程序篮子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/26/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E7%A8%8B%E5%BA%8F%E7%AF%AE%E5%AD%90/" class="article-date">
+  <time datetime="2018-03-26T11:51:35.000Z" itemprop="datePublished">2018-03-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【暂存】程序篮子
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 1009<br>#define ll long long<br>char a[maxl];//用字符串存储m<br>ll m[maxl], n, ans[maxl];<br>void solve1();//解决乘法情况<br>void solve2();  //解决除法情况<br>void init(); //初始化<br>int main(){<br>int sel;<br>while(1){<br>puts(“\n请选择: (0/1/2):”);<br>printf(“\t(1)长整数乘普通整数\n”);<br>printf(“\t(2)长整数除普通整数\n”);<br>printf(“\t(0)退出\n”);<br>scanf(“%d”, &amp;sel);<br>if(1==sel){<br>solve1();<br>}<br>else if(2==sel){<br>solve2();<br>}<br>else{<br>break;<br>}<br>}<br>return 0;<br>}</p>
+<p>void init(){<br>int i=0;<br>for(i=0; i&lt;maxl; ++i){<br>ans[i]=0;<br>}<br>}<br>void solve1(){<br>int len, i;<br>init();<br>puts(“将进行乘法运算，请输入长整数 m :”);<br>scanf(“%s”, a);<br>puts(“请输入普通整数 n (n在int类型的表示范围之内):”);<br>scanf(“%I64d”, &amp;n);<br>if(n&lt;0){<br>putchar(‘-‘);<br>n=-n;<br>}<br>len=strlen(a);<br>for(i=0; i&lt;len; ++i){<br>m[i]=(ll)(a[i]-‘0’);<br>}<br>for(i=len-1; i; –i){<br>ans[i]+=m[i]*n;<br>ans[i-1]+=ans[i]/10;<br>ans[i]%=10;<br>}<br>ans[0]+=m[0]*n;<br>for(i=0; i&lt;len; ++i){<br>printf(“%d”, ans[i]);<br>}<br>}<br>void solve2(){<br>ll lm;<br>double m, ans;<br>init();<br>puts(“将进行除法运算，请输入长整数 m :”);<br>scanf(“%I64d”, &amp;lm);<br>puts(“请输入普通整数 n (n在int类型的表示范围之内):”);<br>scanf(“%I64d”, &amp;n);<br>if(n&lt;0){<br>putchar(‘-‘);<br>n=-n;<br>}<br>printf(“%lf”, (double)(lm/n)+(double)(lm%n)/(double)n);<br>}</p>
+<p> </p>
+<p>#include&lt;stdio.h&gt;<br>#define maxl 109<br>#define ll long long<br>char a[maxl];<br>ll m;<br>int main(){<br>int sel;<br>char t;<br>while(1){<br>puts(“\n请选择: (0/1/2):”);<br>puts(“\t(1)转换成16进制输出”);<br>puts(“\t(2)转换成8进制输出”);<br>puts(“\t(0)退出”);<br>scanf(“%d”, &amp;sel);<br>getchar(); //读入缓冲区中的’\n’，方便之后读入m<br>if(0==sel){<br>break;<br>}<br>else{<br>m=0;<br>t=getchar();<br>while(t!=’\n’){<br>m*=(ll)10;<br>m+=(ll)(t-‘0’);<br>t=getchar();<br>}<br>if(1==sel){<br>printf(“%X\n”, m);<br>}<br>else if(2==sel){<br>printf(“%o\n”, m);<br>}<br>}<br>}<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 109<br>char command[maxl], t1[maxl], t2[maxl], in[maxl*3]=”copy “;<br>int main(){<br>scanf(“%s%s%s”, command, t1, t2);<br>system(strcat(strcat(strcat(in, t1), “ “), t2));<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#define maxn 10009<br>char name[maxn][109];<br>double math[maxn], eng[maxn];<br>int main(){</p>
+<p>int n, i;<br>scanf(“%d”, &amp;n);<br>freopen(“file1.txt”, “r”, stdin);<br>for(i=0; i&lt;n; ++i){<br>scanf(“%s%lf”, name[i], &amp;math[i]);<br>}<br>freopen(“file2.txt”, “r”, stdin);<br>for(i=0; i&lt;n; ++i){<br>scanf(“%s%lf”, name[i], &amp;eng[i]);<br>}<br>freopen(“file3.txt”, “w”, stdout);<br>for(i=0; i&lt;n; ++i){<br>printf(“%s %.1lf %.1lf %.1lf\n”, name[i], math[i], eng[i], (math[i]+eng[i])/2);<br>}<br>return 0;<br>}</p>
+<p> </p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 10009<br>char a[maxl], b[maxl], c[maxl];<br>int p[maxl], num[400];<br>void kmp(){<br>int n, m, i, j;<br>a[0]=’*‘;<br>b[0]=’*‘;<br>n=strlen(a)-1, m=strlen(b)-1;<br>p[1]=0;<br>j=0;<br>for(i=2; i&lt;=m; ++i){<br>while(j&gt;0&amp;&amp;b[j+1]!=b[i])j=p[j];<br>if(b[j+1]==b[i])++j;<br>p[i]=j;<br>}<br>j=0;<br>int lastp=1;<br>for(i=1; i&lt;=n; ++i){<br>while(j&gt;0&amp;&amp;b[j+1]!=a[i])j=p[j];<br>if(b[j+1]==a[i])++j;<br>if(j==m){<br>//printf(“***%d\n”, i-m+1);<br>for(int k=lastp; k&lt;=i-m; ++k){<br>putchar(a[k]);<br>}<br>printf(“%s”, c+1);<br>lastp=i+1;<br>j=p[j];<br>}<br>}<br>for(int k=lastp; k&lt;=n; ++k){<br>putchar(a[k]);<br>}<br>}<br>int main(){<br>char t=0;<br>int i, s, e;<br>puts(“输入被替换的文本:”);<br>scanf(“%s”, b+1);<br>puts(“输入替换成的文本:”);<br>scanf(“%s”, c+1);<br>getchar();<br>freopen(“file1.txt”, “r”, stdin);<br>t=getchar();<br>i=1;<br>while(t!=EOF){<br>a[i++]=t;<br>++num[t];<br>t=getchar();<br>}<br>a[i]=’\n’;<br>for(i=’a’; i&lt;=’z’; ++i){<br>printf(“%c %d\n”, i, num[i]+num[‘A’+i-‘a’]);<br>}<br>freopen(“file2.txt”, “w”, stdout);<br>kmp();<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>char* strcpy(char* des, const char* src){<br>char* i=des;<br>while((*i++ = *src++)!=’\0’);<br>return des;<br>}<br>int strcmp(const char* s1, const char* s2){<br>while(*s1==*s2){<br>if(‘\0’==*s1)return 0;<br>++s1, ++s2;<br>}<br>return *s1&gt;*s2?1:-1;<br>}<br>int main(){<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxn 10009<br>struct node{<br>char name[30], email[30], path[100], sex[20], pho[20];<br>int used;<br>}a[maxn];<br>int tail;<br>void find(int key, char* s){<br>int i=0;<br>char *c;<br>for(i=0; i&lt;tail; ++i){<br>if(a[i].used){<br>if(1==key){<br>c=a[i].name;<br>}<br>else if(2==key){<br>c=a[i].pho;<br>}<br>else if(3==key){<br>c=a[i].email;<br>}<br>else if(4==key){<br>c=a[i].path;<br>}<br>if(!strcmp(c, s)){<br>puts(“*************************“);<br>printf(“%s\n%s\n%s\n%s\n%s\n”, a[i].name, a[i].sex, a[i].pho, a[i].email, a[i].path);<br>puts(“*************************“);<br>}<br>}<br>}<br>}<br>void del(int key, char* s){<br>int i=0;<br>char *c;<br>for(i=0; i&lt;tail; ++i){<br>if(a[i].used){<br>if(1==key){<br>c=a[i].name;<br>}<br>else if(2==key){<br>c=a[i].pho;<br>}<br>else if(3==key){<br>c=a[i].email;<br>}<br>else if(4==key){<br>c=a[i].path;<br>}<br>if(!strcmp(c, s)){<br>a[i].used=false;<br>}<br>}<br>}<br>}<br>int main(){<br>node t;<br>int sel, key, i;<br>tail=0;<br>puts(“通讯录管理软件”);<br>while(1){<br>puts(“请选择您要进行的操作：”);<br>puts(“(1)添加”);<br>puts(“(2)查询”);<br>puts(“(3)删除”);<br>puts(“(4)全部输出”);<br>puts(“(0)退出”);<br>scanf(“%d”, &amp;sel);<br>if(0==sel)break;<br>else if(1==sel){<br>puts(“请输入被添加者的姓名:”);<br>scanf(“%s”, t.name);<br>puts(“请输入被添加者的性别:”);<br>scanf(“%s”, t.sex);<br>puts(“请输入被添加者的手机:”);<br>scanf(“%s”, t.pho);<br>puts(“请输入被添加者的 Email :”);<br>scanf(“%s”, t.email);<br>puts(“请输入被添加者的地址:”);<br>scanf(“%s”, t.path);<br>t.used=true;<br>a[tail]=t;<br>++tail;<br>puts(“添加成功”);<br>}<br>else if(2==sel){<br>puts(“请选择查询关键字”);<br>puts(“(1)姓名”);<br>puts(“(2)手机”);<br>puts(“(3)Email”);<br>puts(“(4)地址”);<br>scanf(“%d”, &amp;key);<br>if(1==key){<br>puts(“请输入查询姓名:”);<br>scanf(“%s”, t.name);<br>find(1, t.name);<br>}<br>else if(2==key){<br>puts(“请输入查询手机:”);<br>scanf(“%s”, t.pho);<br>find(2, t.pho);<br>}<br>else if(3==key){<br>puts(“请输入查询 Email:”);<br>scanf(“%s”, t.email);<br>find(3, t.email);<br>}<br>else if(4==key){<br>puts(“请输入查询地址:”);<br>scanf(“%s”, t.path);<br>find(4, t.path);<br>}<br>}<br>else if(3==sel){<br>puts(“请输入删除关键字”);<br>puts(“(1)姓名”);<br>puts(“(2)手机”);<br>puts(“(3)Email”);<br>puts(“(4)地址”);<br>scanf(“%d”, &amp;key);<br>if(1==key){<br>puts(“请输入删除姓名:”);<br>scanf(“%s”, t.name);<br>del(1, t.name);<br>}<br>else if(2==key){<br>puts(“请输入删除手机:”);<br>scanf(“%s”, t.pho);<br>del(2, t.pho);<br>}<br>else if(3==key){<br>puts(“请输入删除 Email:”);<br>scanf(“%s”, t.email);<br>del(3, t.email);<br>}<br>else if(4==key){<br>puts(“请输入删除地址:”);<br>scanf(“%s”, t.path);<br>del(4, t.path);<br>}<br>}<br>else if(4==sel){<br>for(i=0; i&lt;tail; ++i){<br>if(a[i].used){<br>puts(“*************************“);<br>printf(“%s\n%s\n%s\n%s\n%s\n”, a[i].name, a[i].sex, a[i].pho, a[i].email, a[i].path);<br>puts(“*************************“);<br>}<br>}<br>}<br>}<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;math.h&gt;<br>int main(){<br>int n, op, n1, n2, tot=0;<br>double ans, realans;<br>srand((unsigned) time(NULL));<br>puts(“小学生数学测试软件”);<br>puts(“请输入答题的个数:”);<br>scanf(“%d”, &amp;n);<br>while(n–){<br>n1=rand()%100+1;<br>n2=rand()%100+2;<br>op=rand()%4+1;<br>printf(“%d “, n1);<br>if(1==op)putchar(‘+’), realans=(double)n1+(double)n2;<br>else if(2==op)putchar(‘-‘), realans=(double)n1-(double)n2;<br>else if(3==op)putchar(‘*‘), realans=(double)n1*(double)n2;<br>else if(4==op)putchar(‘/‘), realans=(double)n1/(double)n2;<br>printf(“ %d=?\n”, n2);<br>puts(“请输入答案”);<br>scanf(“%llf”, &amp;ans);<br>if(abs(abs(ans)-abs(realans))&lt;0.001){<br>tot++;<br>puts(“答对了”);<br>}<br>else{<br>puts(“答错了”);<br>}<br>}<br>printf(“总共答对了 %d 道题目\n”, tot);<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/26/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E7%A8%8B%E5%BA%8F%E7%AF%AE%E5%AD%90/" data-id="ckf6quc37005oxsw7e7gwfgto" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/04/flip-game/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Flip Game
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/25/%E7%AC%AC%E5%8D%81%E4%B8%89%E6%AC%A1csp%E8%AE%A4%E8%AF%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第十三次CSP认证</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2-SAT/">2-SAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ACM%E7%AB%9E%E8%B5%9B/">ACM竞赛</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KMP/">KMP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Point/">Point</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%85%E8%A7%A3%E5%86%B3/">待解决</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%A7%E6%8B%89%E5%9B%BE/">欧拉图</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B4%AA%E5%BF%83/">贪心</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" rel="tag">2-SAT，二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" rel="tag">2-SAT，图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" rel="tag">栈，树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="tag">欧拉回路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" rel="tag">路径压缩</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2-SAT/" style="font-size: 10px;">2-SAT</a> <a href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" style="font-size: 10px;">2-SAT，二分</a> <a href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">2-SAT，图论</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/tarjan/" style="font-size: 10px;">tarjan</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10px;">优先队列</a> <a href="/tags/%E5%89%B2%E7%82%B9/" style="font-size: 10px;">割点</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" style="font-size: 10px;">栈，树</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">模板</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">路径压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/sizeof-%E7%AC%94%E8%AE%B0/">sizeof 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/%E4%B8%A4%E4%B8%AA%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E8%BD%AF%E4%BB%B6/">两个屏幕录制软件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/10/%E3%80%90%E6%A0%91%E3%80%91red-alert/">【树】Red alert</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/%E3%80%90poj-2157%E3%80%91maze/">【POJ 2157】Maze</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CQUPT 2018 寒假训练 DIV1（5）生成树 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目(PDF) A - Qin Shi Huang’s National Road System B - Bond C - Stream My Contest D - Slim Span E - ACM Contest and Blackout F - Teen Girl Squad G - Arctic Network H - Tour Belt I - Sensor network J - G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CQUPT 2018 寒假训练 DIV1（5）生成树">
+<meta property="og:url" content="http://example.com/2018/07/20/cqupt-2018-%E5%AF%92%E5%81%87%E8%AE%AD%E7%BB%83-div1%EF%BC%885%EF%BC%89%E7%94%9F%E6%88%90%E6%A0%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目(PDF) A - Qin Shi Huang’s National Road System B - Bond C - Stream My Contest D - Slim Span E - ACM Contest and Blackout F - Teen Girl Squad G - Arctic Network H - Tour Belt I - Sensor network J - G">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-07-20T13:18:28.000Z">
+<meta property="article:modified_time" content="2020-09-17T11:39:00.984Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cqupt-2018-寒假训练-div1（5）生成树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/cqupt-2018-%E5%AF%92%E5%81%87%E8%AE%AD%E7%BB%83-div1%EF%BC%885%EF%BC%89%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
+  <time datetime="2018-07-20T13:18:28.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CQUPT 2018 寒假训练 DIV1（5）生成树
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目-PDF"><a href="#题目-PDF" class="headerlink" title="题目(PDF)"></a>题目(PDF)</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/A.pdf">A - Qin Shi Huang’s National Road System</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/B.pdf">B - Bond</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/C.pdf">C - Stream My Contest</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/D.pdf">D - Slim Span</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/E.pdf">E - ACM Contest and Blackout</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/F.pdf">F - Teen Girl Squad</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/G.pdf">G - Arctic Network</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/H.pdf">H - Tour Belt</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/I.pdf">I - Sensor network</a></li>
+<li><a target="_blank" rel="noopener" href="http://logiko.top/wp-content/uploads/2018/02/J.pdf">J - Genghis Khan the Conqueror</a><a id="more"></a>
+<h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1></li>
+</ul>
+<ol>
+<li>秦始皇建公路，n个城池，路长即是城池之间的距离，有一次机会不耗费代价联通两个城市，所以要修 n-2 条路，每个城池有个人口值。不耗费代价联通的两个城池的人口值之和记为 A ，修路长度记为 B ，求最大的(A/B); 一开始想的是枚举城市点对，每次跑最小生成树。O(n^3) &gt; 10亿，妥妥超时啊！ 后来想先跑一边最小生成树，再删一条边，不知道这样对不。要是正确，需要证明最小生成树的子树也是最小生成树。是吗？ 反证，如果子树不是最小生成树，那么该树一定可以更小，矛盾。 所以这道题就是先跑一遍最小生成树，再枚举删一条边。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/07/20/cqupt-2018-%E5%AF%92%E5%81%87%E8%AE%AD%E7%BB%83-div1%EF%BC%885%EF%BC%89%E7%94%9F%E6%88%90%E6%A0%91/" data-id="ckf6quc1a001kxsw7c6dphkl2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/20/%E6%9A%91%E6%9C%9F%E9%9B%86%E8%AE%ADing%EF%BC%8C%E6%9A%82%E6%97%B6%E5%B0%81%E5%AD%98%E4%B9%8B%E5%89%8D%E7%9A%84%E6%B0%B4%E9%A2%98%E9%A2%98%E8%A7%A3%E4%BA%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          暑期集训ing，暂时封存之前的题解了
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/20/divisiblity-of-differences/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Divisiblity of Differences</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2-SAT/">2-SAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ACM%E7%AB%9E%E8%B5%9B/">ACM竞赛</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KMP/">KMP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Point/">Point</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%85%E8%A7%A3%E5%86%B3/">待解决</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%A7%E6%8B%89%E5%9B%BE/">欧拉图</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B4%AA%E5%BF%83/">贪心</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" rel="tag">2-SAT，二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" rel="tag">2-SAT，图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" rel="tag">栈，树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="tag">欧拉回路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" rel="tag">路径压缩</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2-SAT/" style="font-size: 10px;">2-SAT</a> <a href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" style="font-size: 10px;">2-SAT，二分</a> <a href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">2-SAT，图论</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/tarjan/" style="font-size: 10px;">tarjan</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10px;">优先队列</a> <a href="/tags/%E5%89%B2%E7%82%B9/" style="font-size: 10px;">割点</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" style="font-size: 10px;">栈，树</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">模板</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">路径压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/sizeof-%E7%AC%94%E8%AE%B0/">sizeof 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/%E4%B8%A4%E4%B8%AA%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E8%BD%AF%E4%BB%B6/">两个屏幕录制软件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/10/%E3%80%90%E6%A0%91%E3%80%91red-alert/">【树】Red alert</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/%E3%80%90poj-2157%E3%80%91maze/">【POJ 2157】Maze</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

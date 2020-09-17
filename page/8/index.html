@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-对拍-bat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/05/%E5%AF%B9%E6%8B%8D-bat/" class="article-date">
+  <time datetime="2018-04-05T02:01:33.000Z" itemprop="datePublished">2018-04-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/05/%E5%AF%B9%E6%8B%8D-bat/">对拍.bat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>@echo off<br>:loop<br>makedata.exe<br>submit.exe<br>baoli.exe<br>fc submit.out baoli.out<br>if not errorlevel 1 goto loop<br>pause<br>goto loop</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/04/05/%E5%AF%B9%E6%8B%8D-bat/" data-id="ckf6quc3z0087xsw71lqedlk0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flip-game" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/04/flip-game/" class="article-date">
+  <time datetime="2018-04-04T14:49:20.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a>►<a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a>►<a class="article-category-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/flip-game/">Flip Game</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1753">http://poj.org/problem?id=1753</a> 题目大意： 在4x4的游戏棋盘上有16个方格，每个方格是一个开关，按一下点亮当前方格，再按以下就关闭当前方格。但是，当你按下当前方格时，它的上下左右四个方格同时会受到影响，原来点亮的会被关闭，原来关闭的会被点亮。 游戏的目标是使得16个格子全部点亮或者全部熄灭，你的任务是找出最少的操作步数字。 解法一：枚举所有方案。因为每个格子要么不按，要么按一次，不可能需要按2次或以上。所以讨论每个格子是否按下。总共2^16种方案。每次按下操作需要修改5个格子的状态（上下左右和自身）实施每种方案可以得到一个结果，与全灭或全亮情况比对，比对一次需要16次比较。枚举所有方案，不断更新最小步数。O(5*16*2^16)~=O(5e6) 解法1：深搜出所有方案</p>
+<p>dfs(1, 0);//当前处在第1个格子，按了0次<br>void dfs(int cur, int step){//cur当前所处的格子(1~16), step当前按下次数<br>if(cur&gt;16){//如果16个格子都已经讨论完毕，就比对是否得到全灭或全亮情况<br>if(step&lt;ans&amp;&amp;same()){//更新答案<br>ans=step;<br>}<br>}<br>dfs(cur+1, step);//不按的情况<br>press(cur);<br>dfs(cur+1, step+1);//按的情况<br>press(cur); //还原<br>}</p>
+<p>#include<cstdio><br>using namespace std;<br>bool m[6][6];<br>int di[5]={0, 0, 0, -1, 1};<br>int dj[5]={0, -1, 1, 0, 0};<br>int ans;<br>void f(bool *a){<br>*a=!(*a);<br>}<br>void press(int a){<br>int i=(a-1)/4+1, j=(a-1)%4+1;<br>for(int k=0; k&lt;5; ++k){<br>f(&amp;m[i+di[k]][j+dj[k]]);<br>}<br>}<br>bool ok(bool a){<br>for(int i=1; i&lt;=4; ++i){<br>for(int j=1; j&lt;=4; ++j){<br>if(m[i][j]==a){<br>return false;<br>}<br>}<br>}<br>return true;<br>}<br>void dfs(int cur, int step){<br>if(step&gt;ans)return;<br>if(cur&gt;16){<br>if(step&lt;ans&amp;&amp;(ok(1)ok(0))){<br>ans=step;<br>}<br>return;<br>}<br>dfs(cur+1, step);<br>press(cur);<br>dfs(cur+1, step+1);<br>press(cur);<br>}<br>void init(){<br>ans=17;<br>char s[9], t;<br>for(int i=1; i&lt;=4; ++i){<br>scanf(“%s”, s+1);<br>for(int j=1; j&lt;=4; ++j){<br>t=s[j];<br>if(‘w’==t){<br>m[i][j]=true;<br>}<br>else{<br>m[i][j]=false;<br>}<br>}<br>}<br>}<br>int main(){<br>init();<br>dfs(1, 0);<br>if(ans&lt;17)printf(“%d”, ans);<br>else printf(“Impossible”);<br>return 0;<br>}</p>
+<p>  解法2：宽搜</p>
+<p>step[start]=0, mark[start]=true;<br>q.push(start);<br>while(!q.empty()){<br>pre=q.front();<br>q.pop();<br>for(i=0; i&lt;16; ++i){<br>cur=filp(pre, i);<br>if(!mark[cur]){<br>mark[cur]=true;<br>step[cur]=step[pre]+1;<br>q.push(cur);<br>if(0==cur65535==cur){<br>return step[cur];<br>}<br>}<br>}<br>}</p>
+<p>void flip(int a, int k){<br>s=s^(1&lt;&lt;k);<br>if(k&gt;3){<br>s=s^(1&lt;&lt;(k-4));<br>}<br>if(k&lt;12){<br>s=s^(1&lt;&lt;(k+4));<br>}<br>if(k%4!=0){<br>s=s^(1&lt;&lt;(k-1));<br>}<br>if((k+1)%4!=0){<br>s=s^(1&lt;&lt;(k+1));<br>}<br>}</p>
+<p>#include<cstdio><br>#include<queue><br>using namespace std;<br>queue<int>q;<br>bool mark[70000];<br>int step[70000];<br>int flip(int s, int k){<br>s=s^(1&lt;&lt;k);<br>if(k&gt;3){<br>s=s^(1&lt;&lt;(k-4));<br>}<br>if(k&lt;12){<br>s=s^(1&lt;&lt;(k+4));<br>}<br>if(k%4!=0){<br>s=s^(1&lt;&lt;(k-1));<br>}<br>if((k+1)%4!=0){<br>s=s^(1&lt;&lt;(k+1));<br>}<br>return s;<br>}<br>int bfs(int start){<br>int pre, cur;<br>step[start]=0, mark[start]=true;<br>q.push(start);<br>while(!q.empty()){<br>pre=q.front();<br>q.pop();<br>for(int i=0; i&lt;16; ++i){<br>cur=flip(pre, i);<br>if(!mark[cur]){<br>if(0==cur65535==cur){<br>return step[pre]+1;<br>}<br>mark[cur]=true;<br>step[cur]=step[pre]+1;<br>q.push(cur);</p>
+<p>}<br>}<br>}<br>return -1;<br>}<br>int main(){<br>char s[199];<br>int start=0;<br>for(int i=0; i&lt;4; ++i){<br>scanf(“%s”, s);<br>for(int j=0; j&lt;4; ++j){<br>if(‘w’==s[j]){<br>start+=(1&lt;&lt;(i*4+j));<br>}<br>}<br>}<br>if(0==start65535==start){<br>printf(“0”);<br>return 0;<br>}<br>int ans=bfs(start);<br>if(-1!=ans){<br>printf(“%d”, ans);<br>}<br>else{<br>printf(“Impossible”);<br>}<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/04/04/flip-game/" data-id="ckf6quc1i001yxsw7d5z5chrf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【暂存】程序篮子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/26/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E7%A8%8B%E5%BA%8F%E7%AF%AE%E5%AD%90/" class="article-date">
+  <time datetime="2018-03-26T11:51:35.000Z" itemprop="datePublished">2018-03-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/26/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E7%A8%8B%E5%BA%8F%E7%AF%AE%E5%AD%90/">【暂存】程序篮子</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 1009<br>#define ll long long<br>char a[maxl];//用字符串存储m<br>ll m[maxl], n, ans[maxl];<br>void solve1();//解决乘法情况<br>void solve2();  //解决除法情况<br>void init(); //初始化<br>int main(){<br>int sel;<br>while(1){<br>puts(“\n请选择: (0/1/2):”);<br>printf(“\t(1)长整数乘普通整数\n”);<br>printf(“\t(2)长整数除普通整数\n”);<br>printf(“\t(0)退出\n”);<br>scanf(“%d”, &amp;sel);<br>if(1==sel){<br>solve1();<br>}<br>else if(2==sel){<br>solve2();<br>}<br>else{<br>break;<br>}<br>}<br>return 0;<br>}</p>
+<p>void init(){<br>int i=0;<br>for(i=0; i&lt;maxl; ++i){<br>ans[i]=0;<br>}<br>}<br>void solve1(){<br>int len, i;<br>init();<br>puts(“将进行乘法运算，请输入长整数 m :”);<br>scanf(“%s”, a);<br>puts(“请输入普通整数 n (n在int类型的表示范围之内):”);<br>scanf(“%I64d”, &amp;n);<br>if(n&lt;0){<br>putchar(‘-‘);<br>n=-n;<br>}<br>len=strlen(a);<br>for(i=0; i&lt;len; ++i){<br>m[i]=(ll)(a[i]-‘0’);<br>}<br>for(i=len-1; i; –i){<br>ans[i]+=m[i]*n;<br>ans[i-1]+=ans[i]/10;<br>ans[i]%=10;<br>}<br>ans[0]+=m[0]*n;<br>for(i=0; i&lt;len; ++i){<br>printf(“%d”, ans[i]);<br>}<br>}<br>void solve2(){<br>ll lm;<br>double m, ans;<br>init();<br>puts(“将进行除法运算，请输入长整数 m :”);<br>scanf(“%I64d”, &amp;lm);<br>puts(“请输入普通整数 n (n在int类型的表示范围之内):”);<br>scanf(“%I64d”, &amp;n);<br>if(n&lt;0){<br>putchar(‘-‘);<br>n=-n;<br>}<br>printf(“%lf”, (double)(lm/n)+(double)(lm%n)/(double)n);<br>}</p>
+<p> </p>
+<p>#include&lt;stdio.h&gt;<br>#define maxl 109<br>#define ll long long<br>char a[maxl];<br>ll m;<br>int main(){<br>int sel;<br>char t;<br>while(1){<br>puts(“\n请选择: (0/1/2):”);<br>puts(“\t(1)转换成16进制输出”);<br>puts(“\t(2)转换成8进制输出”);<br>puts(“\t(0)退出”);<br>scanf(“%d”, &amp;sel);<br>getchar(); //读入缓冲区中的’\n’，方便之后读入m<br>if(0==sel){<br>break;<br>}<br>else{<br>m=0;<br>t=getchar();<br>while(t!=’\n’){<br>m*=(ll)10;<br>m+=(ll)(t-‘0’);<br>t=getchar();<br>}<br>if(1==sel){<br>printf(“%X\n”, m);<br>}<br>else if(2==sel){<br>printf(“%o\n”, m);<br>}<br>}<br>}<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 109<br>char command[maxl], t1[maxl], t2[maxl], in[maxl*3]=”copy “;<br>int main(){<br>scanf(“%s%s%s”, command, t1, t2);<br>system(strcat(strcat(strcat(in, t1), “ “), t2));<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#define maxn 10009<br>char name[maxn][109];<br>double math[maxn], eng[maxn];<br>int main(){</p>
+<p>int n, i;<br>scanf(“%d”, &amp;n);<br>freopen(“file1.txt”, “r”, stdin);<br>for(i=0; i&lt;n; ++i){<br>scanf(“%s%lf”, name[i], &amp;math[i]);<br>}<br>freopen(“file2.txt”, “r”, stdin);<br>for(i=0; i&lt;n; ++i){<br>scanf(“%s%lf”, name[i], &amp;eng[i]);<br>}<br>freopen(“file3.txt”, “w”, stdout);<br>for(i=0; i&lt;n; ++i){<br>printf(“%s %.1lf %.1lf %.1lf\n”, name[i], math[i], eng[i], (math[i]+eng[i])/2);<br>}<br>return 0;<br>}</p>
+<p> </p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 10009<br>char a[maxl], b[maxl], c[maxl];<br>int p[maxl], num[400];<br>void kmp(){<br>int n, m, i, j;<br>a[0]=’*‘;<br>b[0]=’*‘;<br>n=strlen(a)-1, m=strlen(b)-1;<br>p[1]=0;<br>j=0;<br>for(i=2; i&lt;=m; ++i){<br>while(j&gt;0&amp;&amp;b[j+1]!=b[i])j=p[j];<br>if(b[j+1]==b[i])++j;<br>p[i]=j;<br>}<br>j=0;<br>int lastp=1;<br>for(i=1; i&lt;=n; ++i){<br>while(j&gt;0&amp;&amp;b[j+1]!=a[i])j=p[j];<br>if(b[j+1]==a[i])++j;<br>if(j==m){<br>//printf(“***%d\n”, i-m+1);<br>for(int k=lastp; k&lt;=i-m; ++k){<br>putchar(a[k]);<br>}<br>printf(“%s”, c+1);<br>lastp=i+1;<br>j=p[j];<br>}<br>}<br>for(int k=lastp; k&lt;=n; ++k){<br>putchar(a[k]);<br>}<br>}<br>int main(){<br>char t=0;<br>int i, s, e;<br>puts(“输入被替换的文本:”);<br>scanf(“%s”, b+1);<br>puts(“输入替换成的文本:”);<br>scanf(“%s”, c+1);<br>getchar();<br>freopen(“file1.txt”, “r”, stdin);<br>t=getchar();<br>i=1;<br>while(t!=EOF){<br>a[i++]=t;<br>++num[t];<br>t=getchar();<br>}<br>a[i]=’\n’;<br>for(i=’a’; i&lt;=’z’; ++i){<br>printf(“%c %d\n”, i, num[i]+num[‘A’+i-‘a’]);<br>}<br>freopen(“file2.txt”, “w”, stdout);<br>kmp();<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>char* strcpy(char* des, const char* src){<br>char* i=des;<br>while((*i++ = *src++)!=’\0’);<br>return des;<br>}<br>int strcmp(const char* s1, const char* s2){<br>while(*s1==*s2){<br>if(‘\0’==*s1)return 0;<br>++s1, ++s2;<br>}<br>return *s1&gt;*s2?1:-1;<br>}<br>int main(){<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxn 10009<br>struct node{<br>char name[30], email[30], path[100], sex[20], pho[20];<br>int used;<br>}a[maxn];<br>int tail;<br>void find(int key, char* s){<br>int i=0;<br>char *c;<br>for(i=0; i&lt;tail; ++i){<br>if(a[i].used){<br>if(1==key){<br>c=a[i].name;<br>}<br>else if(2==key){<br>c=a[i].pho;<br>}<br>else if(3==key){<br>c=a[i].email;<br>}<br>else if(4==key){<br>c=a[i].path;<br>}<br>if(!strcmp(c, s)){<br>puts(“*************************“);<br>printf(“%s\n%s\n%s\n%s\n%s\n”, a[i].name, a[i].sex, a[i].pho, a[i].email, a[i].path);<br>puts(“*************************“);<br>}<br>}<br>}<br>}<br>void del(int key, char* s){<br>int i=0;<br>char *c;<br>for(i=0; i&lt;tail; ++i){<br>if(a[i].used){<br>if(1==key){<br>c=a[i].name;<br>}<br>else if(2==key){<br>c=a[i].pho;<br>}<br>else if(3==key){<br>c=a[i].email;<br>}<br>else if(4==key){<br>c=a[i].path;<br>}<br>if(!strcmp(c, s)){<br>a[i].used=false;<br>}<br>}<br>}<br>}<br>int main(){<br>node t;<br>int sel, key, i;<br>tail=0;<br>puts(“通讯录管理软件”);<br>while(1){<br>puts(“请选择您要进行的操作：”);<br>puts(“(1)添加”);<br>puts(“(2)查询”);<br>puts(“(3)删除”);<br>puts(“(4)全部输出”);<br>puts(“(0)退出”);<br>scanf(“%d”, &amp;sel);<br>if(0==sel)break;<br>else if(1==sel){<br>puts(“请输入被添加者的姓名:”);<br>scanf(“%s”, t.name);<br>puts(“请输入被添加者的性别:”);<br>scanf(“%s”, t.sex);<br>puts(“请输入被添加者的手机:”);<br>scanf(“%s”, t.pho);<br>puts(“请输入被添加者的 Email :”);<br>scanf(“%s”, t.email);<br>puts(“请输入被添加者的地址:”);<br>scanf(“%s”, t.path);<br>t.used=true;<br>a[tail]=t;<br>++tail;<br>puts(“添加成功”);<br>}<br>else if(2==sel){<br>puts(“请选择查询关键字”);<br>puts(“(1)姓名”);<br>puts(“(2)手机”);<br>puts(“(3)Email”);<br>puts(“(4)地址”);<br>scanf(“%d”, &amp;key);<br>if(1==key){<br>puts(“请输入查询姓名:”);<br>scanf(“%s”, t.name);<br>find(1, t.name);<br>}<br>else if(2==key){<br>puts(“请输入查询手机:”);<br>scanf(“%s”, t.pho);<br>find(2, t.pho);<br>}<br>else if(3==key){<br>puts(“请输入查询 Email:”);<br>scanf(“%s”, t.email);<br>find(3, t.email);<br>}<br>else if(4==key){<br>puts(“请输入查询地址:”);<br>scanf(“%s”, t.path);<br>find(4, t.path);<br>}<br>}<br>else if(3==sel){<br>puts(“请输入删除关键字”);<br>puts(“(1)姓名”);<br>puts(“(2)手机”);<br>puts(“(3)Email”);<br>puts(“(4)地址”);<br>scanf(“%d”, &amp;key);<br>if(1==key){<br>puts(“请输入删除姓名:”);<br>scanf(“%s”, t.name);<br>del(1, t.name);<br>}<br>else if(2==key){<br>puts(“请输入删除手机:”);<br>scanf(“%s”, t.pho);<br>del(2, t.pho);<br>}<br>else if(3==key){<br>puts(“请输入删除 Email:”);<br>scanf(“%s”, t.email);<br>del(3, t.email);<br>}<br>else if(4==key){<br>puts(“请输入删除地址:”);<br>scanf(“%s”, t.path);<br>del(4, t.path);<br>}<br>}<br>else if(4==sel){<br>for(i=0; i&lt;tail; ++i){<br>if(a[i].used){<br>puts(“*************************“);<br>printf(“%s\n%s\n%s\n%s\n%s\n”, a[i].name, a[i].sex, a[i].pho, a[i].email, a[i].path);<br>puts(“*************************“);<br>}<br>}<br>}<br>}<br>return 0;<br>}</p>
+<p>#include&lt;stdio.h&gt;<br>#include&lt;time.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;math.h&gt;<br>int main(){<br>int n, op, n1, n2, tot=0;<br>double ans, realans;<br>srand((unsigned) time(NULL));<br>puts(“小学生数学测试软件”);<br>puts(“请输入答题的个数:”);<br>scanf(“%d”, &amp;n);<br>while(n–){<br>n1=rand()%100+1;<br>n2=rand()%100+2;<br>op=rand()%4+1;<br>printf(“%d “, n1);<br>if(1==op)putchar(‘+’), realans=(double)n1+(double)n2;<br>else if(2==op)putchar(‘-‘), realans=(double)n1-(double)n2;<br>else if(3==op)putchar(‘*‘), realans=(double)n1*(double)n2;<br>else if(4==op)putchar(‘/‘), realans=(double)n1/(double)n2;<br>printf(“ %d=?\n”, n2);<br>puts(“请输入答案”);<br>scanf(“%llf”, &amp;ans);<br>if(abs(abs(ans)-abs(realans))&lt;0.001){<br>tot++;<br>puts(“答对了”);<br>}<br>else{<br>puts(“答错了”);<br>}<br>}<br>printf(“总共答对了 %d 道题目\n”, tot);<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/26/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E7%A8%8B%E5%BA%8F%E7%AF%AE%E5%AD%90/" data-id="ckf6quc37005oxsw7e7gwfgto" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-第十三次csp认证" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/25/%E7%AC%AC%E5%8D%81%E4%B8%89%E6%AC%A1csp%E8%AE%A4%E8%AF%81/" class="article-date">
+  <time datetime="2018-03-25T07:12:04.000Z" itemprop="datePublished">2018-03-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/25/%E7%AC%AC%E5%8D%81%E4%B8%89%E6%AC%A1csp%E8%AE%A4%E8%AF%81/">第十三次CSP认证</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include<cstdio><br>using namespace std;<br>#define maxn 39<br>int a[maxn], get[maxn];<br>int main(){<br>int cur, i=0, ans=0, len;<br>while(1){<br>scanf(“%d”, &amp;cur);<br>if(!cur){<br>break;<br>}<br>++i;<br>a[i]=cur;<br>}<br>len=i;<br>a[0]=0;<br>for(i=1; i&lt;=len; ++i){<br>if(1==a[i]){<br>++ans;<br>}<br>else if(2==a[i]){<br>if(1==a[i-1]1==i){<br>ans+=2;<br>get[i]=2;<br>}<br>else{<br>get[i]=get[i-1]+2;<br>ans+=get[i];<br>}<br>}<br>}<br>printf(“%d”, ans);<br>return 0;<br>}</p>
+<p>#include<cstdio><br>using namespace std;<br>#define maxn 109<br>#define maxl 1009<br>int x[maxn], d[maxn], p[maxl][2], num[maxl];<br>int n, L, t;<br>void next(){<br>int i, curx;<br>for(i=0; i&lt;=L; ++i){<br>num[i]=0;<br>}<br>for(i=1; i&lt;=n; ++i){<br>x[i]+=d[i];<br>p[x[i]][num[x[i]]]=i;<br>num[x[i]]++;<br>}<br>if(1==num[0]){<br>d[p[0][0]]*=-1;<br>}<br>for(i=1; i&lt;L; ++i){<br>if(2==num[i]){<br>d[p[i][0]]*=-1;<br>d[p[i][1]]*=-1;<br>}<br>}<br>if(1==num[L]){<br>d[p[L][0]]*=-1;<br>}<br>}<br>int main(){<br>int i, curx;<br>scanf(“%d%d%d”, &amp;n, &amp;L, &amp;t);<br>for(i=1; i&lt;=n; ++i){<br>scanf(“%d”, &amp;curx);<br>x[i]=curx;<br>d[i]=1;<br>p[curx][0]=i;<br>num[curx]=1;<br>}<br>for(i=1; i&lt;=t; ++i){<br>next();<br>}<br>for(i=1; i&lt;=n; ++i){<br>printf(“%d “, x[i]);<br>}<br>return 0;<br>}</p>
+<p>#include<cstdio><br>#include<iostream><br>#include<string><br>#include<vector><br>using namespace std;<br>#define maxn 109<br>int n, m;<br>struct nrule{<br>vector<string>ge;<br>string p;<br>bool is_end;<br>}rule[maxn];<br>struct url{<br>vector<string>ge;<br>bool is_end;<br>}url[maxn];<br>bool is_can(string a){<br>if(“<path>“==a”<int>“==a”<str>“==a)return true;<br>return false;<br>}<br>bool is_num(string a){<br>int len=a.length();<br>for(int j=0; j&lt;len; ++j){<br>if(a[j]&gt;=’0’&amp;&amp;a[j]&lt;=’9’){<br>continue;<br>}<br>else{<br>return false;<br>}<br>}<br>return true;<br>}<br>bool ok(string can, string re){<br>if(can==re){<br>return true;<br>}<br>if(is_can(can)){<br>if(“<int>“==can){<br>if(is_num(re)){<br>return true;<br>}<br>}<br>if(“<str>“==can){<br>return true;<br>}<br>}<br>}<br>void match(int cur){<br>int i, j;<br>bool flag;<br>for(i=1; i&lt;=n; ++i){<br>flag=true;<br>if(rule[i].is_end!=url[cur].is_end){<br>continue;<br>}<br>if(rule[i].ge.size()==url[cur].ge.size())<br>{<br>for(j=0; j&lt;rule[i].ge.size(); ++j){<br>if(!ok(rule[i].ge[j], url[cur].ge[j])){<br>//cout&lt;&lt;”***“&lt;&lt;rule[i].ge[j]&lt;&lt;” “&lt;&lt;url[cur].ge[j]&lt;&lt;endl;<br>flag=false;<br>break;<br>}<br>}<br>if(flag){<br>cout&lt;&lt;rule[i].p;<br>for(j=0; j&lt;url[cur].ge.size(); ++j){<br>if(is_can(rule[i].ge[j])){<br>cout&lt;&lt;” “&lt;&lt;url[cur].ge[j];<br>}<br>}<br>cout&lt;&lt;endl;<br>return;<br>}<br>}<br>if(rule[i].ge.size()&lt;=url[cur].ge.size())<br>{<br>if(rule[i].ge[0]==url[cur].ge[0]){<br>if(rule[i].ge[rule[i].ge.size()-1]==”<path>“){<br>int last=url[cur].ge.size()-1;<br>int len=url[cur].ge[last].length();<br>if(‘/‘!=url[cur].ge[last][len-1])<br>{<br>cout&lt;&lt;rule[i].p;<br>for(j=0; j&lt;url[cur].ge.size(); ++j){<br>if(rule[i].ge[j]==”<path>“){<br>cout&lt;&lt;” “;<br>for(int k=j+1; k&lt;url[cur].ge.size(); ++k){<br>cout&lt;&lt;url[cur].ge[k]&lt;&lt;”/“;<br>}<br>}<br>else if(is_can(rule[i].ge[j])){<br>cout&lt;&lt;” “&lt;&lt;url[cur].ge[j];<br>}<br>}<br>cout&lt;&lt;endl;<br>return;<br>}<br>}<br>}</p>
+<p>}<br>}<br>cout&lt;&lt;”404”&lt;&lt;endl;<br>}<br>int main(){<br>int i;<br>cin&gt;&gt;n&gt;&gt;m;<br>string cur, ne;</p>
+<p>for(i=1; i&lt;=n; ++i){<br>cin&gt;&gt;cur;<br>int len=cur.length();<br>int j;<br>ne.erase();<br>for(j=1; j&lt;len; ++j){<br>if(‘/‘==cur[j]){<br>rule[i].ge.push_back(ne);<br>//cout&lt;&lt;ne&lt;&lt;”+++”&lt;&lt;endl;<br>ne.erase();<br>}<br>else{<br>ne+=cur[j];<br>}<br>}<br>if(‘/‘!=cur[len-1]){<br>rule[i].is_end=false;<br>//cout&lt;&lt;ne&lt;&lt;””&lt;&lt;endl;<br>rule[i].ge.push_back(ne);<br>}<br>else{<br>rule[i].is_end=true;<br>}<br>cin&gt;&gt;rule[i].p;<br>}<br>for(i=1; i&lt;=m; ++i){<br>cin&gt;&gt;cur;<br>int len=cur.length();<br>int j;<br>ne.erase();<br>for(j=1; j&lt;len; ++j){<br>if(‘/‘==cur[j]){<br>url[i].ge.push_back(ne);<br>//cout&lt;&lt;ne&lt;&lt;”+++”&lt;&lt;endl;<br>ne.erase();<br>}<br>else{<br>ne+=cur[j];<br>}<br>}<br>if(‘/‘!=cur[len-1]){<br>//cout&lt;&lt;ne&lt;&lt;””&lt;&lt;endl;<br>url[i].is_end=false;<br>url[i].ge.push_back(ne);<br>}<br>else{<br>url[i].is_end=true;<br>}<br>match(i);<br>}<br>/*<br>for(i=1; i&lt;=m; ++i){<br>for(int j=0; j&lt;url[i].ge.size(); ++j){<br>cout&lt;&lt;url[i].ge[j]&lt;&lt;”*“;<br>}<br>cout&lt;&lt;endl;<br>}<br>*/<br>return 0;<br>}</p>
+<p>#include<cstdio><br>using namespace std;<br>struct node{<br>int a[4][4];<br>};<br>int max(int a, int b){<br>return a&gt;b?a:b;<br>}<br>int min(int a, int b){<br>return a&lt;b?a:b;<br>}<br>int is_win(node t){<br>int i, j;<br>int a[4][4];<br>int flag=0;<br>for(i=1; i&lt;=3; ++i){<br>for(j=1; j&lt;=3; ++j){<br>a[i][j]=t.a[i][j];<br>}<br>}<br>for(i=1; i&lt;=3; ++i){<br>if(a[i][1]==a[i][2]&amp;&amp;a[i][2]==a[i][3]&amp;&amp;a[i][1]&amp;&amp;a[i][2]&amp;&amp;a[i][3]){<br>if(1==a[i][2]){<br>flag=1;<br>}<br>else{<br>flag=-1;<br>}<br>}<br>if(a[1][i]==a[2][i]&amp;&amp;a[2][i]==a[3][i]&amp;&amp;a[1][i]&amp;&amp;a[2][i]&amp;&amp;a[3][i]){<br>if(1==a[1][i]){<br>flag=1;<br>}<br>else{<br>flag=-1;<br>}<br>}<br>}<br>if(a[1][1]==a[2][2]&amp;&amp;a[2][2]==a[3][3]&amp;&amp;a[1][1]&amp;&amp;a[2][2]&amp;&amp;a[3][3]){<br>if(1==a[1][1]){<br>flag=1;<br>}<br>else{<br>flag=-1;<br>}<br>}<br>if(a[1][3]==a[2][2]&amp;&amp;a[2][2]==a[3][1]&amp;&amp;a[1][3]&amp;&amp;a[2][2]&amp;&amp;a[3][1]){<br>if(1==a[1][3]){<br>flag=1;<br>}<br>else{<br>flag=-1;<br>}<br>}<br>if(flag){<br>int ans=0;<br>for(i=1; i&lt;=3; ++i){<br>for(j=1; j&lt;=3; ++j){<br>if(!a[i][j]){<br>++ans;<br>}<br>}<br>}<br>return flag*(ans+1);<br>}<br>else{<br>return 0;<br>}<br>}<br>int dfs(node t, int who){<br>int i, j, rt;<br>int tt=is_win(t);<br>if(tt){<br>return tt;<br>}<br>if(1==who){<br>rt=0;<br>for(i=1; i&lt;=3; ++i){<br>for(j=1; j&lt;=3; ++j){<br>if(!t.a[i][j]){<br>t.a[i][j]=1;<br>rt=max(rt, dfs(t, 2));<br>t.a[i][j]=0;<br>}<br>}<br>}<br>return rt;<br>}<br>if(2==who){<br>rt=0;<br>for(i=1; i&lt;=3; ++i){<br>for(j=1; j&lt;=3; ++j){<br>if(!t.a[i][j]){<br>t.a[i][j]=2;<br>rt=min(rt, dfs(t, 2));<br>t.a[i][j]=0;<br>}<br>}<br>}<br>return rt;<br>}<br>}<br>void init(){</p>
+<p>}<br>void solve(){<br>node t;<br>int i, j;<br>for(i=1; i&lt;=3; ++i){<br>for(j=1; j&lt;=3; ++j){<br>scanf(“%d”, &amp;t.a[i][j]);<br>}<br>}<br>printf(“%d\n”, dfs(t, 1));<br>}<br>int main(){<br>int T;<br>scanf(“%d”, &amp;T);<br>while(T–){<br>init();<br>solve();<br>}<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/25/%E7%AC%AC%E5%8D%81%E4%B8%89%E6%AC%A1csp%E8%AE%A4%E8%AF%81/" data-id="ckf6quc480091xsw7gyy3atxx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kmp模板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/19/kmp%E6%A8%A1%E6%9D%BF/" class="article-date">
+  <time datetime="2018-03-19T11:13:31.000Z" itemprop="datePublished">2018-03-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/KMP/">KMP</a>►<a class="article-category-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/19/kmp%E6%A8%A1%E6%9D%BF/">【模板】KMP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>//字符串存储在[1…len]<br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 10009//字符串长度<br>char a[maxl], b[maxl];<br>int p[maxl];//以a[i]结尾能匹配到的b的最大长度<br>void kmp(){<br>int i, j, n, m;<br>a[0]=’*‘;//把a[0]填充，方便使用strlen<br>b[0]=’*‘;<br>n=strlen(a)-1, m=strlen(b)-1;//字符串真实长度要减一 </p>
+<p>/* 自我匹配，预处理p[]（也即fail[]） */<br>p[1]=0;//如果a[1]与b[1]不相同，这意味着，以a[1]结尾能匹配的b的最大长度为0，这个初始化在a[1]&lt;&gt;b[1]时起到实质作用，而当a[1]==b[1]时，p[1]会被预处理成1<br>j=0;//当前最大匹配长度初始化为0<br>for(i=2; i&lt;=m; ++i){//p[1]=0;<br>while(j&gt;0&amp;&amp;b[j+1]!=b[i])j=p[j];//如果下一对字符不能匹配，循环直到满足成功匹配<br>if(b[j+1]==b[i])++j;//如果下一对字符能匹配，当前最大匹配长度+1<br>p[i]=j;//得到p[i]<br>}</p>
+<p>/* 正式开始匹配 */<br>j=0;//当前预处理长度初始化为0<br>for(i=1; i&lt;=n; ++i){<br>while(j&gt;0&amp;&amp;b[j+1]!=a[i])j=p[j];//如果下一对字符不能匹配，循环直到满足成功匹配<br>if(b[j+1]==a[i])++j;//如果下一对字符能匹配，当前最大匹配长度+1<br>if(j==m){//如果当前最大匹配长度刚好等于b的长度m，说明找到一个成功匹配<br>printf(“***%d***\n”, i-m+1);//输出匹配到的字符串在a中的起始位置<br>j=p[j];//可能a中不止一个成功匹配，所以还可以继续更新j值<br>}<br>}<br>}<br>int main(){<br>scanf(“%s%s”, a+1, b+1);<br>kmp();<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/19/kmp%E6%A8%A1%E6%9D%BF/" data-id="ckf6quc1l0026xsw7duqe526a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【暂存】长整数乘法模拟" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/17/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E9%95%BF%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%E6%A8%A1%E6%8B%9F/" class="article-date">
+  <time datetime="2018-03-17T09:59:59.000Z" itemprop="datePublished">2018-03-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/17/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E9%95%BF%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%E6%A8%A1%E6%8B%9F/">【暂存】长整数乘法模拟</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#define maxl 1009<br>#define ll long long<br>char a[maxl];//用字符串存储m<br>ll m[maxl], n, ans[maxl];<br>void solve1();//解决乘法情况<br>void solve2();  //解决除法情况<br>void init(); //初始化<br>int main(){<br>int sel;<br>while(1){<br>puts(“\n请选择: (0/1/2):”);<br>printf(“\t(1)长整数乘普通整数\n”);<br>printf(“\t(2)长整数除普通整数\n”);<br>printf(“\t(0)退出\n”);<br>scanf(“%d”, &amp;sel);<br>if(1==sel){<br>solve1();<br>}<br>else if(2==sel){<br>solve2();<br>}<br>else{<br>break;<br>}<br>}<br>return 0;<br>}</p>
+<p>void init(){<br>int i=0;<br>for(i=0; i&lt;maxl; ++i){<br>ans[i]=0;<br>}<br>}<br>void solve1(){<br>int len, i;<br>init();<br>puts(“将进行乘法运算，请输入长整数 m :”);<br>scanf(“%s”, a);<br>puts(“请输入普通整数 n (n在int类型的表示范围之内):”);<br>scanf(“%I64d”, &amp;n);<br>if(n&lt;0){<br>putchar(‘-‘);<br>n=-n;<br>}<br>len=strlen(a);<br>for(i=0; i&lt;len; ++i){<br>m[i]=(ll)(a[i]-‘0’);<br>}<br>for(i=len-1; i; –i){<br>ans[i]+=m[i]*n;<br>ans[i-1]+=ans[i]/10;<br>ans[i]%=10;<br>}<br>ans[0]+=m[0]*n;<br>for(i=0; i&lt;len; ++i){<br>printf(“%d”, ans[i]);<br>}<br>}<br>void solve2(){<br>ll lm;<br>double m, ans;<br>init();<br>puts(“将进行除法运算，请输入长整数 m :”);<br>scanf(“%I64d”, &amp;lm);<br>puts(“请输入普通整数 n (n在int类型的表示范围之内):”);<br>scanf(“%I64d”, &amp;n);<br>if(n&lt;0){<br>putchar(‘-‘);<br>n=-n;<br>}<br>printf(“%lf”, (double)(lm/n)+(double)(lm%n)/(double)n);<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/17/%E3%80%90%E6%9A%82%E5%AD%98%E3%80%91%E9%95%BF%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%E6%A8%A1%E6%8B%9F/" data-id="ckf6quc38005rxsw718fxgchw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【数学】codeforces-round-470-div2-b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/13/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91codeforces-round-470-div2-b/" class="article-date">
+  <time datetime="2018-03-13T09:30:06.000Z" itemprop="datePublished">2018-03-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/13/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91codeforces-round-470-div2-b/">【数学】Codeforces Round</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="http://codeforces.com/contest/948/problem/B">http://codeforces.com/contest/948/problem/B</a> 题目大意：有一个大于等于3的数X0，任意选择一个小于X0的质数P0，乘以一个数k使k*P0&gt;=X0，且（k-1）*P0&lt;X0，令X1=k*P0，任意选择一个小于X1的质数P1，乘以一个数u使u*P1&gt;=X1，且（u-1）*P1&lt;X1，令X2=u*P1；现在给你X2，求出所有满足条件的X0里最小的那一个。 解题思路： 绕，超级绕。 我一开始读题目的时候就觉得这道题很绕完全搞不清楚大小关系，经过神级学长的耐心讲解终于搞懂了，此处%红太阳。 首先我想到的是暴力解法，枚举出所有的X1，再枚举出X1最大的质因数，X1-P+1的最小值即为解。于是我们来算一下时间复杂度。枚举所有的X1-&gt;O(n)，枚举出X1最大的质因数-&gt;O(sqrt(n))，n的范围在1e6，果断T。 于是寻找更省时间的方法，不用枚举X1或者不用枚举X1的质因数。 我们探究一下X1和X2的关系，发现如果从X2着手，是可以确定X1的范围的。 X2等于一个小于等于X1的质数乘以一个正数，不妨设这个质数为P，那么X2-P&lt;X1&lt;=X2，右区间是固定死了的X2，左区间的最小值在P取最大值的时候取到。所以X1的范围是[X2-X2最大的质因数+1，X2]。 似乎没有什么用，还是要枚举，但是如果我们已知了X0呢？ 假设我们有一个满足条件的X0，一定可以找到一个X1&gt;=X0且处于这个区间（因为保证了X0是满足条件的一个解）。这个X1是如何找到的？一个小于等于X0的质数乘以一个正数！也就是说，对于任意大于X0且小于等于X2的数X0’，这个质数都存在，那么这个X1也存在，那么当X1&gt;=X0’的时候，我们X0‘也是合理解，当X1&lt;X0’的时候，X0’必定处于这个区间！（X1处于这个区间，X0’小于等于X2）。而处于这个区间的所有数都是一个满足条件的X0（可以取自己的质因数乘以一个因子等于自己，那么X0==X1，X1处于区间内）。 于是我们得出结论：只要一个X0是满足条件的解，所有大于X0且小于等于X2的都是满足条件的解。 满足单调性-&gt;求最小-&gt;二分！ 最后只要二分X0即可。 下面放31msAC代码：</p>
+<p>#include&lt;stdio.h&gt;<br>#define MAXN 1000000</p>
+<p>int prime[MAXN+5],tot;<br>bool f[MAXN+5];</p>
+<p>int _max(int a,int b){return a&gt;b?a:b;}</p>
+<p>void _before(){</p>
+<p>int i,j;<br>for(i=2;i&lt;=MAXN;i++){<br>if(!f[i])prime[++tot]=i;<br>for(j=1;j&lt;=tot&amp;&amp;prime[j]*i&lt;=MAXN;j++){<br>f[i*prime[j]]=true;<br>if(i%prime[j]==0)break;<br>}<br>}<br>}</p>
+<p>int main(){</p>
+<p>int x1,x2,l,r,i,mid,p;<br>bool flag;<br>_before();<br>scanf(“%d”,&amp;x2);<br>if(!f[x2]){<br>printf(“%d”,x2);<br>return 0;<br>}<br>for(i=tot;i&gt;=1;i–)<br>if(x2%prime[i]==0)break;<br>p=prime[i];<br>l=2; r=x2;<br>while(l&lt;r){<br>if(l+1==r)break;<br>mid=(l+r)&gt;&gt;1;<br>flag=false;<br>for(i=1;prime[i]&lt;=mid;i++){<br>x1=(_max(mid,x2-p+1)+prime[i]-1)/prime[i]*prime[i];<br>if(x1-prime[i]&lt;mid&amp;&amp;x1&lt;=x2){<br>flag=true;<br>break;<br>}<br>}<br>if(flag)r=mid;<br>else l=mid;<br>}<br>printf(“%d”,r);<br>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/13/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91codeforces-round-470-div2-b/" data-id="ckf6quc35005ixsw71dwefh0b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【割点】spf（待续）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/%E3%80%90%E5%89%B2%E7%82%B9%E3%80%91spf%EF%BC%88%E5%BE%85%E7%BB%AD%EF%BC%89/" class="article-date">
+  <time datetime="2018-03-07T08:55:17.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/%E3%80%90%E5%89%B2%E7%82%B9%E3%80%91spf%EF%BC%88%E5%BE%85%E7%BB%AD%EF%BC%89/">【割点】【模板】SPF（烂尾）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  题目链接：<a target="_blank" rel="noopener" href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=1119">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=1119</a>   题目大意：基于点对点的网络中，数据在节点相连的网络中传输，一个节点故障可能阻断网络中数据的传输。给出一个完好的（强连通）的网络，求发生故障能阻断网络数据传输的节点和这些节点发生故障会把网络分成几块。 一句话：求割点和割点分出的连通块数量 还不会tarjan，由于此题节点数&lt;=1000，所以先写个O(n^2)的暴力水过。 居然0ms，数据真水。 以下是O(n^2)的枚举删除每个点，用并查集计算分出的连通块数量，程序如下。</p>
+<p>#include<cstdio><br>using namespace std;<br>#define maxn 1009<br>int min(int a, int b){<br>return a&lt;b?a:b;<br>}<br>int max(int a, int b){<br>return a&gt;b?a:b;<br>}<br>int minn, n, m, fa[maxn];<br>bool mark[maxn];<br>struct node{<br>int x, y;<br>}edge[maxn*maxn];<br>int getfather(int x){<br>if(fa[x]==x)return x;<br>return fa[x]=getfather(fa[x]);<br>}<br>void merge(int x, int y){<br>int fx=getfather(x), fy=getfather(y);<br>if(fx!=fy){<br>fa[fx]=fy;<br>}<br>}<br>void solve(){<br>int curans;<br>for(int i=0; i&lt;=m; ++i){<br>minn=min(minn, min(edge[i].x, edge[i].y));<br>n=max(n, max(edge[i].x, edge[i].y));<br>}<br>bool have=false;<br>for(int i=minn; i&lt;=n; ++i){<br>for(int j=minn; j&lt;=n; ++j){<br>fa[j]=j;<br>}<br>for(int j=0; j&lt;=m; ++j){<br>if(edge[j].x!=i&amp;&amp;edge[j].y!=i){<br>merge(edge[j].x, edge[j].y);<br>}<br>}<br>for(int j=minn; j&lt;=n; ++j){<br>mark[j]=false;<br>}<br>for(int j=minn; j&lt;=n; ++j){<br>mark[getfather(j)]=true;<br>}<br>curans=0;<br>for(int j=minn; j&lt;=n; ++j){<br>if(mark[j]){<br>++curans;<br>}<br>}<br>if(curans&gt;2){<br>printf(“  SPF node %d leaves %d subnets\n”, i, curans-1);<br>have=true;<br>}<br>}<br>if(!have){<br>puts(“  No SPF nodes”);<br>}</p>
+<p>}<br>int main(){<br>int x, y;<br>for(int i=1; ; ++i){<br>scanf(“%d”, &amp;x);<br>if(!x){<br>break;<br>}<br>m=0;<br>scanf(“%d”, &amp;y);<br>minn=maxn;<br>n=0;<br>edge[0].x=x;<br>edge[0].y=y;<br>scanf(“%d”, &amp;x);<br>while(x){<br>scanf(“%d”, &amp;y);<br>++m;<br>edge[m].x=x;<br>edge[m].y=y;<br>scanf(“%d”, &amp;x);<br>}<br>if(i!=1)putchar(‘\n’);<br>printf(“Network #%d\n”, i);<br>solve();<br>}<br>return 0;<br>}</p>
+<p>接下来尝试用O(n)的方法解决割点问题。 待续。     偷瞟了《数据结构》严蔚敏版7.4.4关节点和重连通分量，终于回忆起我寒假想到的算法了，也发现了我之前的算法和书上算法的区别。 此处留坑，以后来填。 参考<a target="_blank" rel="noopener" href="http://www.cnblogs.com/zufezzt/p/4699704.html">http://www.cnblogs.com/zufezzt/p/4699704.html</a> 以下是AC程序</p>
+<p>#include<cstdio><br>#include<vector><br>using namespace std;<br>#define maxn 1009<br>int max(int a, int b){<br>return a&gt;b?a:b;<br>}<br>vector<int>G[maxn];<br>int n,//总的节点数<br>son, //根结点的子节点数<br>visited[maxn], //时间戳，记录访问节点的次序<br>low[maxn], //该节点能访问到的visited最小的节点<br>subnets[maxn], //去掉该节点剩余的连通分量个数<br>count;//记录当前dfs到的时间戳<br>void init()//初始化<br>{<br>    for(int i=0;i&lt;maxn;i++){<br>G[i].clear();<br>    }<br>low[1]=visited[1]=1;//是其本身<br>    count=1;son=0;<br>    for(int i=0; i&lt;maxn; ++i){<br>visited[i]=0;<br>subnets[i]=0;<br>}<br>visited[1]=1;<br>}</p>
+<p>void dfs(int cur)<br>{<br>    for(int i=0;i&lt;G[cur].size();i++)//枚举子节点<br>    {<br>        int next=G[cur][i];<br>        if(!visited[next])//如果没访问过，肯定是子节点<br>        {<br>            count++;//递增时间戳<br>visited[next]=low[next]=count;//把时间戳赋值给子节点<br>            dfs(next);//递归搜索子节点<br>            low[cur]=min(low[cur],low[next]);//当前节点能访问到的节点的最小时间戳<br>            if(low[next]&gt;=visited[cur])//如果子节点能访问的节点的最小时间戳大于等于当前时间戳，说明可确定一个连通分量<br>            {<br>                if(cur!=1) subnets[cur]++;//排除该节点是根结点<br>                if(cur==1) son++;//记录根结点的子节点个数<br>            }<br>        }<br>        else low[cur]=min(low[cur],visited[next]);//如果下一个节点是访问过的节点，更新当前节点的low值<br>    }<br>}<br>void print(){<br>bool find=false;<br>for(int i=1; i&lt;=n; ++i){<br>if(subnets[i]){<br>find=true;<br>printf(“  SPF node %d leaves %d subnets\n”, i, subnets[i]+1);//加1是因为父节点处于一个连通分量之中<br>}<br>}<br>if(!find){<br>puts(“  No SPF nodes”);<br>}<br>}<br>int main()<br>{<br>int x, y;<br>for(int i=1; ; ++i){<br>init();//初始化<br>n=0;<br>scanf(“%d”, &amp;x);<br>if(!x){<br>break;<br>}<br>scanf(“%d”, &amp;y);<br>n=max(n, x);//更新最大节点数<br>n=max(n, y);<br>G[y].push_back(x);<br>G[x].push_back(y);<br>scanf(“%d”, &amp;x);<br>while(x){<br>scanf(“%d”, &amp;y);<br>n=max(n, x);<br>n=max(n, y);<br>G[x].push_back(y);<br>G[y].push_back(x);<br>scanf(“%d”, &amp;x);<br>}<br>if(i!=1)putchar(‘\n’);<br>printf(“Network #%d\n”, i);<br>dfs(1);<br>if(son&gt;1){<br>subnets[1]=son-1;//只要根结点有超过两个子树，说明根结点是关节点。<br>}<br>print();<br>}<br>    return 0;<br>}</p>
+<p>总的来说，我自己那种实现方式略有不同的程序目前还没能AC。QAQ，心塞。 上面的AC程序算是我的tarjan模板了，目前并不能掩盖这是一篇烂尾题解的事实。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/07/%E3%80%90%E5%89%B2%E7%82%B9%E3%80%91spf%EF%BC%88%E5%BE%85%E7%BB%AD%EF%BC%89/" data-id="ckf6quc2f003yxsw7en66fust" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【2-sat】the-ministers-major-mess-uvalive-4452" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/%E3%80%902-sat%E3%80%91the-ministers-major-mess-uvalive-4452/" class="article-date">
+  <time datetime="2018-03-06T17:20:38.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/2-SAT/">2-SAT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/%E3%80%902-sat%E3%80%91the-ministers-major-mess-uvalive-4452/">【2-SAT】The Ministers&#39; Major Mess UVALive - 4452</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="https://cn.vjudge.net/contest/209474#problem/C">https://cn.vjudge.net/contest/209474#problem/C</a> 题目大意： 一共有m个提案，n个政客，每个政客都会对一些提案（最多四个）提出自己的意见——通过或者不通过。一个政客获得满意结果，当且仅当他的意见被满足了超过（注意是超过，即大于）一半，请问有没有这样的方案，使n个政客都满意？如果存在，输出<strong>所有</strong>方案。（这个所有的意思是一个提案如果只能是“通过”决策（在所有方案里都是通过），输出’y‘，只能不通过输出’n’，可以通过也可以不通过（有的方案是y，有的是n）输出‘?’）   解题思路： 本来想写在《浅谈2-SAT》里，想了想由于这道题比较巧妙，还是单独提出来写。巧妙之处在于1、寻找所有可行方案。2、问题到标准模型的转化。 先谈一下第二点。 一个政客满意，当且仅当他有一半以上的观点被采纳。也就是说，对于只提出一个提案和两个提案的人，只有他提出的所有观点都被采纳，这个人才会满意。对于提出三个提案的人，至少要满足两个观点（最多有一个不满足）；对于提出四个提案的人，至少要满足三个观点（最多有1个不满足）。 每个提案有通过和不通过两种互斥状态，对于观点数量小于等于2的人，他所提出的提案有固定状态（不对称图），对于观点数大于等于3的人，我们如果令其中一个观点为不满足，那么其他的观点都必须满足。 由此我们建立了一个部分确定值的2-SAT图像。 再谈第一点。 这道题的难点其实我自我感觉在第一点。令人惊讶的是，第一点并没有什么高端的处理方法，仅仅是暴力枚举，如果一个提案两种状态的2-SAT图像都成立，那么就是？，只成立一种就是对应结果。如果两种都不成立那么就无解。   下面放有详细注释的9msAC代码并附了几组数据debug（欢迎hack）：</p>
+<p>/* by Lstg */<br>/* 2018-03-07 00:33:58 */</p>
+<p>#include&lt;stdio.h&gt;<br>#include<iostream><br>#include<vector><br>#include&lt;string.h&gt;<br>#define MAXN 5100<br>using namespace std;</p>
+<p>vector<int>g[MAXN];</p>
+<p>bool mark[MAXN],f[MAXN];<br>int stk[MAXN],top,n,lq[MAXN];<br>char ans[500];</p>
+<p>int _max(int a,int b){return a&gt;b?a:b;}<br>int _abs(int x){return x&lt;0?-x:x;}</p>
+<p>void _clean(){</p>
+<p>for(int i=0;i&lt;=2*n+1;i++){<br>g[i].clear();<br>mark[i]=0;<br>f[i]=false;<br>}<br>}</p>
+<p>bool _dfs(int x){</p>
+<p>if(mark[x^1])return false;<br>if(mark[x])return true;<br>mark[x]=true;<br>stk[++top]=x;<br>for(int i=0;i&lt;g[x].size();i++)<br>if(!_dfs(g[x][i]))return false;<br>return true;<br>}</p>
+<p>bool _Twosat(){</p>
+<p>for(int i=2;i&lt;=2*n+1;i+=2)<br>if(!mark[i]&amp;&amp; !mark[i+1]){<br>top=0;<br>if(!_dfs(i)){<br>while(top)<br>mark[stk[top–]]=false;<br>if(!_dfs(i+1))return false;<br>}<br>}<br>return true;<br>}</p>
+<p>void _addside(int k){</p>
+<p>for(int i=1;i&lt;=k;i++)<br>for(int j=1;j&lt;=k;j++)<br>if(j!=i)<br>g[lq[i]^1].push_back(lq[j]);//lq[i]^1表示状态的反面，即不满足。在此情况下其他的状态必须满足</p>
+<p>}</p>
+<p>bool _check(){</p>
+<p>int i;<br>for(i=2;i&lt;=2*n+1;i++)<br>if(f[i]&amp;&amp;!_dfs(i))return false;//如果不能满足固定的状态值就无解<br>memcpy(f,mark,sizeof(mark));//f数组已经没用了，用来当过渡<br>//printf(“n=%d\n”,n);<br>if(!_Twosat())return false;//如果满足了所有固定状态却不能满足整个2-SAT图，无解<br>//puts(“haha!\n”);<br>for(i=1;i&lt;=n;i++){<br>memcpy(mark,f,sizeof(f));//固定状态都满足的残余2-SAT图作为起始图像<br>top=0;<br>if(!(_dfs(2*i)&amp;&amp;_Twosat()))ans[i]=’n’;/*这里可能有点难理解，我写的确实很绕，没必要跟我一样，<br>这里的意思是如果不满足该提案通过，那么这个提案就一定是不通过（因为无解的情况已经全排除了，一定有解，这个提案通过却不满足图像，那么这个提案一定通不过）*/<br>else{//如果提案可以通过<br>memcpy(mark,f,sizeof(f));<br>top=0;<br>if(_dfs(2*i+1)&amp;&amp;_Twosat())ans[i]=’?’;//验证是否也可以不通过<br>else ans[i]=’y’;<br>}</p>
+<p>}<br>return true;//返回有解<br>}</p>
+<p>int main(){</p>
+<p>//freopen(“C.txt”,”w”,stdout);<br>int m,k,i,j,a,x;<br>char ch[8];<br>int T=0;<br>while(true){</p>
+<p>scanf(“%d%d”,&amp;n,&amp;m);<br>if(m+n==0)return 0;<br>_clean();</p>
+<p>for(i=1;i&lt;=m;i++){<br>scanf(“%d”,&amp;k);</p>
+<p>for(j=1;j&lt;=k;j++){<br>scanf(“%d%s”,&amp;x,ch);</p>
+<p>a=(ch[0]==’y’?0:1);//2*ii表示通过，2*ii+1表示不通过</p>
+<p>if(k&lt;=2)f[x*2+a]=true;//f数组表示有确定状态的提案<br>else lq[j]=x*2+a;//lq数组为一会儿构图的媒介<br>}<br>if(k&gt;=3)_addside(k);//用lq数组构图<br>}<br>printf(“Case %d: “,++T);<br>if(!_check())printf(“impossible\n”);<br>else{<br>for(i=1;i&lt;=n;i++)<br>putchar(ans[i]);<br>putchar(10);<br>}<br>}<br>return 0;<br>}<br>/*<br>1 1<br>1 1 n<br>1 1<br>1 1 y</p>
+<p>3 2<br>3 1 y 2 y 3 n<br>3 1 n 2 n 3 y</p>
+<p>3 2<br>3 1 y 2 n 3 n<br>3 1 n 2 n 3 n</p>
+<p>3 2<br>3 1 y 2 y 3 n<br>3 1 y 2 n 3 n</p>
+<p>4 2<br>4 1 y 2 y 3 n 4 n<br>3 2 n 3 n 4 n<br>3 2<br>3 1 y 2 y 3 n<br>3 1 y 2 n 3 n</p>
+<p>*/</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/07/%E3%80%902-sat%E3%80%91the-ministers-major-mess-uvalive-4452/" data-id="ckf6quc260037xsw7c9orayrr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-【数学】【找规律】xenia-and-hamming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/06/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E3%80%90%E6%89%BE%E8%A7%84%E5%BE%8B%E3%80%91xenia-and-hamming/" class="article-date">
+  <time datetime="2018-03-06T15:00:23.000Z" itemprop="datePublished">2018-03-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/06/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E3%80%90%E6%89%BE%E8%A7%84%E5%BE%8B%E3%80%91xenia-and-hamming/">【数学】【找规律】Xenia and Hamming</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="http://codeforces.com/contest/356/problem/B">http://codeforces.com/contest/356/problem/B</a> 题目大意：n个字符串x拼接成字符串a，m个字符串y拼接成字符串b（数据保证a和b的长度相等）输出a和b的Hamming距离（两个等长字符串之间的汉明距离是两个字符串对应位置的不同字符的个数） 思路：首先想到只需要处理lcm( lenx, leny)长度的字符串的Hamming距离得到pans，答案就是n*lenx/lcm(lenx, leny)*pans;复杂度O(lenx^2), lenx&lt;=10^6，稳定超时QAQ。 所以应该在处理海明距离上下工夫。 特例找规律，假设n=4，m=3，x=123，y=1234 <a target="_blank" rel="noopener" href="http://logiko.top/2018/03/06/%e3%80%90%e6%95%b0%e5%ad%a6%e3%80%91%e3%80%90%e6%89%be%e8%a7%84%e5%be%8b%e3%80%91xenia-and-hamming/attachment/2/"><img src="http://logiko.top/wp-content/uploads/2018/03/2.png"></a> 然后发现a中的1刚好和b中的1，2，3，4各比较一次。   再发现a中的2也刚好和b中的每个字符比较一次，如图。 <a target="_blank" rel="noopener" href="http://logiko.top/2018/03/06/%e3%80%90%e6%95%b0%e5%ad%a6%e3%80%91%e3%80%90%e6%89%be%e8%a7%84%e5%be%8b%e3%80%91xenia-and-hamming/attachment/3/"><img src="http://logiko.top/wp-content/uploads/2018/03/3.png"></a>发现规律了，a中的每个字符都会和b中的每个字符匹配，只需要遍历a，b字符串各一遍做个统计就能得到答案。 当然上面只是特例，属于lenx和leny互质，如果不互质，如图。 <a target="_blank" rel="noopener" href="http://logiko.top/2018/03/06/%e3%80%90%e6%95%b0%e5%ad%a6%e3%80%91%e3%80%90%e6%89%be%e8%a7%84%e5%be%8b%e3%80%91xenia-and-hamming/attachment/4/"><img src="http://logiko.top/wp-content/uploads/2018/03/4.png"></a> 此例子中gcd(lenx, leny)==2，a中的1和b中的1，3，5比较，a中的2和b中2，4，6比较，然后发现规律：同余。ai和bj比较当且仅当i同余j(mod gcd(lenx, leny))，扫两遍得答案。</p>
+<p>GCD=gcd(lenx, leny);<br>LCM=lenx/GCD*leny;<br>for(ll i=0; i&lt;lenx; ++i){<br>++a[i%GCD][x[i]-‘a’];<br>}<br>ll pans=0;<br>for(ll i=0; i&lt;leny; ++i){<br>pans+=a[i%GCD][y[i]-‘a’];<br>}<br>printf(“%I64d”, n*lenx/LCM*(LCM-pans));</p>
+<p>以下是AC程序</p>
+<p>#include<cstdio><br>#include<cstring><br>using namespace std;<br>#define ll long long<br>#define maxl 1000009<br>ll gcd(ll a, ll b){<br>if(0==b)return a;<br>return gcd(b, a%b);<br>}<br>char x[maxl], y[maxl];<br>int a[maxl][27], b[maxl][27];<br>int main(){<br>long long n, m, lenx, leny, GCD, LCM;<br>scanf(“%I64d%I64d”, &amp;n, &amp;m);<br>scanf(“%s%s”, x, y);<br>lenx=(ll)strlen(x);<br>leny=(ll)strlen(y);<br>GCD=gcd(lenx, leny);<br>LCM=lenx/GCD*leny;<br>for(ll i=0; i&lt;lenx; ++i){<br>++a[i%GCD][x[i]-‘a’];<br>}<br>ll pans=0;<br>for(ll i=0; i&lt;leny; ++i){<br>pans+=a[i%GCD][y[i]-‘a’];<br>}<br>printf(“%I64d”, n*lenx/LCM*(LCM-pans));</p>
+<p>return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/06/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E3%80%90%E6%89%BE%E8%A7%84%E5%BE%8B%E3%80%91xenia-and-hamming/" data-id="ckf6quc36005kxsw7gw5s3lrb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2-SAT/">2-SAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ACM%E7%AB%9E%E8%B5%9B/">ACM竞赛</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KMP/">KMP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Point/">Point</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%85%E8%A7%A3%E5%86%B3/">待解决</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%A7%E6%8B%89%E5%9B%BE/">欧拉图</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B4%AA%E5%BF%83/">贪心</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" rel="tag">2-SAT，二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" rel="tag">2-SAT，图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" rel="tag">栈，树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="tag">欧拉回路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" rel="tag">路径压缩</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2-SAT/" style="font-size: 10px;">2-SAT</a> <a href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" style="font-size: 10px;">2-SAT，二分</a> <a href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">2-SAT，图论</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/tarjan/" style="font-size: 10px;">tarjan</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10px;">优先队列</a> <a href="/tags/%E5%89%B2%E7%82%B9/" style="font-size: 10px;">割点</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" style="font-size: 10px;">栈，树</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">模板</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">路径压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/sizeof-%E7%AC%94%E8%AE%B0/">sizeof 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/%E4%B8%A4%E4%B8%AA%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E8%BD%AF%E4%BB%B6/">两个屏幕录制软件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/10/%E3%80%90%E6%A0%91%E3%80%91red-alert/">【树】Red alert</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/%E3%80%90poj-2157%E3%80%91maze/">【POJ 2157】Maze</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

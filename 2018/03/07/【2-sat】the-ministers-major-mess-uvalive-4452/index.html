@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>【2-SAT】The Ministers&#39; Major Mess UVALive - 4452 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目链接：https:&#x2F;&#x2F;cn.vjudge.net&#x2F;contest&#x2F;209474#problem&#x2F;C 题目大意： 一共有m个提案，n个政客，每个政客都会对一些提案（最多四个）提出自己的意见——通过或者不通过。一个政客获得满意结果，当且仅当他的意见被满足了超过（注意是超过，即大于）一半，请问有没有这样的方案，使n个政客都满意？如果存在，输出所有方案。（这个所有的意思是一个提案如果只能是“通过”决策">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【2-SAT】The Ministers&#39; Major Mess UVALive - 4452">
+<meta property="og:url" content="http://example.com/2018/03/07/%E3%80%902-sat%E3%80%91the-ministers-major-mess-uvalive-4452/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目链接：https:&#x2F;&#x2F;cn.vjudge.net&#x2F;contest&#x2F;209474#problem&#x2F;C 题目大意： 一共有m个提案，n个政客，每个政客都会对一些提案（最多四个）提出自己的意见——通过或者不通过。一个政客获得满意结果，当且仅当他的意见被满足了超过（注意是超过，即大于）一半，请问有没有这样的方案，使n个政客都满意？如果存在，输出所有方案。（这个所有的意思是一个提案如果只能是“通过”决策">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-03-06T17:20:38.000Z">
+<meta property="article:modified_time" content="2020-09-17T11:39:00.904Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="2-SAT">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【2-sat】the-ministers-major-mess-uvalive-4452" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/%E3%80%902-sat%E3%80%91the-ministers-major-mess-uvalive-4452/" class="article-date">
+  <time datetime="2018-03-06T17:20:38.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/2-SAT/">2-SAT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【2-SAT】The Ministers&#39; Major Mess UVALive - 4452
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="https://cn.vjudge.net/contest/209474#problem/C">https://cn.vjudge.net/contest/209474#problem/C</a> 题目大意： 一共有m个提案，n个政客，每个政客都会对一些提案（最多四个）提出自己的意见——通过或者不通过。一个政客获得满意结果，当且仅当他的意见被满足了超过（注意是超过，即大于）一半，请问有没有这样的方案，使n个政客都满意？如果存在，输出<strong>所有</strong>方案。（这个所有的意思是一个提案如果只能是“通过”决策（在所有方案里都是通过），输出’y‘，只能不通过输出’n’，可以通过也可以不通过（有的方案是y，有的是n）输出‘?’）   解题思路： 本来想写在《浅谈2-SAT》里，想了想由于这道题比较巧妙，还是单独提出来写。巧妙之处在于1、寻找所有可行方案。2、问题到标准模型的转化。 先谈一下第二点。 一个政客满意，当且仅当他有一半以上的观点被采纳。也就是说，对于只提出一个提案和两个提案的人，只有他提出的所有观点都被采纳，这个人才会满意。对于提出三个提案的人，至少要满足两个观点（最多有一个不满足）；对于提出四个提案的人，至少要满足三个观点（最多有1个不满足）。 每个提案有通过和不通过两种互斥状态，对于观点数量小于等于2的人，他所提出的提案有固定状态（不对称图），对于观点数大于等于3的人，我们如果令其中一个观点为不满足，那么其他的观点都必须满足。 由此我们建立了一个部分确定值的2-SAT图像。 再谈第一点。 这道题的难点其实我自我感觉在第一点。令人惊讶的是，第一点并没有什么高端的处理方法，仅仅是暴力枚举，如果一个提案两种状态的2-SAT图像都成立，那么就是？，只成立一种就是对应结果。如果两种都不成立那么就无解。   下面放有详细注释的9msAC代码并附了几组数据debug（欢迎hack）：</p>
+<p>/* by Lstg */<br>/* 2018-03-07 00:33:58 */</p>
+<p>#include&lt;stdio.h&gt;<br>#include<iostream><br>#include<vector><br>#include&lt;string.h&gt;<br>#define MAXN 5100<br>using namespace std;</p>
+<p>vector<int>g[MAXN];</p>
+<p>bool mark[MAXN],f[MAXN];<br>int stk[MAXN],top,n,lq[MAXN];<br>char ans[500];</p>
+<p>int _max(int a,int b){return a&gt;b?a:b;}<br>int _abs(int x){return x&lt;0?-x:x;}</p>
+<p>void _clean(){</p>
+<p>for(int i=0;i&lt;=2*n+1;i++){<br>g[i].clear();<br>mark[i]=0;<br>f[i]=false;<br>}<br>}</p>
+<p>bool _dfs(int x){</p>
+<p>if(mark[x^1])return false;<br>if(mark[x])return true;<br>mark[x]=true;<br>stk[++top]=x;<br>for(int i=0;i&lt;g[x].size();i++)<br>if(!_dfs(g[x][i]))return false;<br>return true;<br>}</p>
+<p>bool _Twosat(){</p>
+<p>for(int i=2;i&lt;=2*n+1;i+=2)<br>if(!mark[i]&amp;&amp; !mark[i+1]){<br>top=0;<br>if(!_dfs(i)){<br>while(top)<br>mark[stk[top–]]=false;<br>if(!_dfs(i+1))return false;<br>}<br>}<br>return true;<br>}</p>
+<p>void _addside(int k){</p>
+<p>for(int i=1;i&lt;=k;i++)<br>for(int j=1;j&lt;=k;j++)<br>if(j!=i)<br>g[lq[i]^1].push_back(lq[j]);//lq[i]^1表示状态的反面，即不满足。在此情况下其他的状态必须满足</p>
+<p>}</p>
+<p>bool _check(){</p>
+<p>int i;<br>for(i=2;i&lt;=2*n+1;i++)<br>if(f[i]&amp;&amp;!_dfs(i))return false;//如果不能满足固定的状态值就无解<br>memcpy(f,mark,sizeof(mark));//f数组已经没用了，用来当过渡<br>//printf(“n=%d\n”,n);<br>if(!_Twosat())return false;//如果满足了所有固定状态却不能满足整个2-SAT图，无解<br>//puts(“haha!\n”);<br>for(i=1;i&lt;=n;i++){<br>memcpy(mark,f,sizeof(f));//固定状态都满足的残余2-SAT图作为起始图像<br>top=0;<br>if(!(_dfs(2*i)&amp;&amp;_Twosat()))ans[i]=’n’;/*这里可能有点难理解，我写的确实很绕，没必要跟我一样，<br>这里的意思是如果不满足该提案通过，那么这个提案就一定是不通过（因为无解的情况已经全排除了，一定有解，这个提案通过却不满足图像，那么这个提案一定通不过）*/<br>else{//如果提案可以通过<br>memcpy(mark,f,sizeof(f));<br>top=0;<br>if(_dfs(2*i+1)&amp;&amp;_Twosat())ans[i]=’?’;//验证是否也可以不通过<br>else ans[i]=’y’;<br>}</p>
+<p>}<br>return true;//返回有解<br>}</p>
+<p>int main(){</p>
+<p>//freopen(“C.txt”,”w”,stdout);<br>int m,k,i,j,a,x;<br>char ch[8];<br>int T=0;<br>while(true){</p>
+<p>scanf(“%d%d”,&amp;n,&amp;m);<br>if(m+n==0)return 0;<br>_clean();</p>
+<p>for(i=1;i&lt;=m;i++){<br>scanf(“%d”,&amp;k);</p>
+<p>for(j=1;j&lt;=k;j++){<br>scanf(“%d%s”,&amp;x,ch);</p>
+<p>a=(ch[0]==’y’?0:1);//2*ii表示通过，2*ii+1表示不通过</p>
+<p>if(k&lt;=2)f[x*2+a]=true;//f数组表示有确定状态的提案<br>else lq[j]=x*2+a;//lq数组为一会儿构图的媒介<br>}<br>if(k&gt;=3)_addside(k);//用lq数组构图<br>}<br>printf(“Case %d: “,++T);<br>if(!_check())printf(“impossible\n”);<br>else{<br>for(i=1;i&lt;=n;i++)<br>putchar(ans[i]);<br>putchar(10);<br>}<br>}<br>return 0;<br>}<br>/*<br>1 1<br>1 1 n<br>1 1<br>1 1 y</p>
+<p>3 2<br>3 1 y 2 y 3 n<br>3 1 n 2 n 3 y</p>
+<p>3 2<br>3 1 y 2 n 3 n<br>3 1 n 2 n 3 n</p>
+<p>3 2<br>3 1 y 2 y 3 n<br>3 1 y 2 n 3 n</p>
+<p>4 2<br>4 1 y 2 y 3 n 4 n<br>3 2 n 3 n 4 n<br>3 2<br>3 1 y 2 y 3 n<br>3 1 y 2 n 3 n</p>
+<p>*/</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/03/07/%E3%80%902-sat%E3%80%91the-ministers-major-mess-uvalive-4452/" data-id="ckf6quc260037xsw7c9orayrr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/07/%E3%80%90%E5%89%B2%E7%82%B9%E3%80%91spf%EF%BC%88%E5%BE%85%E7%BB%AD%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【割点】【模板】SPF（烂尾）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/06/%E3%80%90%E6%95%B0%E5%AD%A6%E3%80%91%E3%80%90%E6%89%BE%E8%A7%84%E5%BE%8B%E3%80%91xenia-and-hamming/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【数学】【找规律】Xenia and Hamming</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2-SAT/">2-SAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ACM%E7%AB%9E%E8%B5%9B/">ACM竞赛</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">AC自动机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/KMP/">KMP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Point/">Point</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">乘法逆元</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A5%E9%97%A8/">入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A/">图的连通</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E8%AE%BA/">图论</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%BA%E5%8F%96%E6%B3%95/">尺取法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">广度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%85%E8%A7%A3%E5%86%B3/">待解决</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%A4%A7%E6%B5%81/">最大流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%80%E5%B0%8F%E5%89%B2/">最小割</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E8%AF%81%E6%98%8E/">未证明</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">树状数组</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%8B%9F/">模拟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AC%A7%E6%8B%89%E5%9B%BE/">欧拉图</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2/">深度搜索</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8A%B6%E5%8E%8B%E5%8A%A8%E5%BD%92/">状压动归</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8F%A0%E7%8E%91/">珠玑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B4%AA%E5%BF%83/">贪心</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%92%E6%8E%A8/">递推</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT/" rel="tag">2-SAT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" rel="tag">2-SAT，二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" rel="tag">2-SAT，图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/" rel="tag">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tarjan/" rel="tag">tarjan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%B2%E7%82%B9/" rel="tag">割点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" rel="tag">栈，树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF/" rel="tag">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="tag">欧拉回路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" rel="tag">路径压缩</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2-SAT/" style="font-size: 10px;">2-SAT</a> <a href="/tags/2-SAT%EF%BC%8C%E4%BA%8C%E5%88%86/" style="font-size: 10px;">2-SAT，二分</a> <a href="/tags/2-SAT%EF%BC%8C%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">2-SAT，图论</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/tarjan/" style="font-size: 10px;">tarjan</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10px;">优先队列</a> <a href="/tags/%E5%89%B2%E7%82%B9/" style="font-size: 10px;">割点</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 15px;">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%88%EF%BC%8C%E6%A0%91/" style="font-size: 10px;">栈，树</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">模板</a> <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">路径压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/18/sizeof-%E7%AC%94%E8%AE%B0/">sizeof 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/%E4%B8%A4%E4%B8%AA%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E8%BD%AF%E4%BB%B6/">两个屏幕录制软件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/10/%E3%80%90%E6%A0%91%E3%80%91red-alert/">【树】Red alert</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/26/%E3%80%90poj-2157%E3%80%91maze/">【POJ 2157】Maze</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
